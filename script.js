@@ -42,17 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links (only on same page)
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
             
             if (targetSection) {
+                e.preventDefault();
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = targetSection.offsetTop - headerHeight;
                 
@@ -61,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
             }
+            // If target doesn't exist, let browser handle navigation normally
         });
     });
 
