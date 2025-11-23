@@ -1,166 +1,172 @@
-# Cloudflare DNS Setup Guide for SEO
+# Cloudflare DNS Optimization for SEO
 
 ## Current Status
 - ✅ `www` CNAME correctly points to Vercel
 - ⚠️ Root domain (`skyesummithomes.com`) A record points to old IP
-- ✅ Redirects configured in `vercel.json` to redirect non-www → www
+- ✅ Redirects configured in `vercel.json` (non-www → www)
 
-## Recommended Cloudflare DNS Changes
+## Recommended DNS Changes
 
-### Option 1: Use Cloudflare Page Rules (Recommended for SEO)
+### Option 1: Update A Record to Vercel (Recommended)
 
-Since we want `www.skyesummithomes.com` as the primary domain, set up a Page Rule to redirect the root domain:
+**Steps:**
 
-1. **Go to Cloudflare Dashboard** → Your Domain → **Rules** → **Page Rules**
-2. **Create a new Page Rule**:
-   - **URL Pattern**: `http://skyesummithomes.com/*`
-   - **Settings**:
-     - **Forwarding URL** → **301 Permanent Redirect**
-     - **Destination URL**: `https://www.skyesummithomes.com/$1`
-   - **Save**
+1. **Get Vercel's IP from Vercel Dashboard:**
+   - Go to Vercel Dashboard → Your Project → Settings → Domains
+   - Look for the A record IP address for your domain
+   - Common Vercel IPs: `76.76.21.21` or check your Vercel dashboard
 
-3. **Create a second Page Rule**:
-   - **URL Pattern**: `https://skyesummithomes.com/*`
-   - **Settings**:
-     - **Forwarding URL** → **301 Permanent Redirect**
-     - **Destination URL**: `https://www.skyesummithomes.com/$1`
-   - **Save**
+2. **Update Cloudflare A Record:**
+   - Go to Cloudflare DNS → Click "Edit" on the A record for `skyesummithomes.com`
+   - Change IP from `216.198.79.1` to Vercel's IP (from step 1)
+   - Keep Proxy status: **DNS only** (gray cloud)
+   - TTL: Auto
+   - Click Save
 
-### Option 2: Update A Record to Vercel (Alternative)
+**OR Option 1B: Use CNAME Flattening (If Available)**
 
-If you prefer to let Vercel handle redirects (already configured in `vercel.json`):
+If Cloudflare supports CNAME flattening for root domain:
+1. Delete the A record for `skyesummithomes.com`
+2. Create new CNAME:
+   - Type: CNAME
+   - Name: `@` or `skyesummithomes.com`
+   - Target: `1e88402ffbe247ac.vercel-dns-017.com` (same as www)
+   - Proxy: DNS only
+   - TTL: Auto
 
-1. **Remove or update the A record**:
-   - Current: `skyesummithomes.com` → `216.198.79.1`
-   - **Action**: Delete this A record (Vercel will handle via DNS)
+### Option 2: Keep Current Setup (If Vercel Handles Redirect)
 
-2. **Add Vercel A records** (if Vercel provides them):
-   - Check Vercel dashboard → Settings → Domains
-   - Add any A records Vercel specifies for root domain
+If Vercel is properly handling the redirect from root to www, you can:
+- Keep the A record as is
+- Ensure Cloudflare's SSL/TLS is set to "Full" or "Full (strict)"
+- Verify redirects work: `http://skyesummithomes.com` → `https://www.skyesummithomes.com`
 
-### Recommended: Keep Current Setup + Add Page Rules
+## Cloudflare Settings for SEO
 
-**Best approach for SEO:**
-1. ✅ Keep `www` CNAME pointing to Vercel (already correct)
-2. ✅ Keep root domain A record (or remove if not needed)
-3. ✅ Add Cloudflare Page Rules to redirect root → www (301 permanent)
-4. ✅ Vercel redirects already configured as backup
+### 1. SSL/TLS Settings
+- **SSL/TLS encryption mode**: Full (strict)
+- **Always Use HTTPS**: ON
+- **Automatic HTTPS Rewrites**: ON
+- **Minimum TLS Version**: 1.2
 
-## Current DNS Records Status
+### 2. Speed Optimizations
+- **Auto Minify**: Enable for HTML, CSS, JavaScript
+- **Brotli**: ON
+- **HTTP/2**: ON (automatic)
+- **HTTP/3 (with QUIC)**: ON
 
-### ✅ Correct Records (Keep These)
-- **CNAME `www`** → `1e88402ffbe247ac.vercel-dns-017.com` (DNS only) ✅
-- **MX records** for email (keep as is) ✅
-- **TXT records** for verification (keep as is) ✅
+### 3. Caching
+- **Caching Level**: Standard
+- **Browser Cache TTL**: Respect Existing Headers
+- **Always Online**: ON
 
-### ⚠️ Records to Review
-- **A record `skyesummithomes.com`** → `216.198.79.1`
-  - **Action**: Either remove it and use Page Rules, or keep it (Vercel redirects will handle it)
+### 4. Page Rules (REQUIRED for SEO)
 
-## Step-by-Step: Add Cloudflare Page Rules
+**IMPORTANT**: Create these page rules in Cloudflare (Rules → Page Rules):
 
-### Step 1: Access Page Rules
-1. Log in to Cloudflare Dashboard
-2. Select `skyesummithomes.com`
-3. Go to **Rules** → **Page Rules** (or **Redirect Rules** in newer interface)
+**Rule 1: Redirect Non-WWW to WWW (Priority 1)**
+- URL Pattern: `skyesummithomes.com/*`
+- Settings:
+  - Forwarding URL: `301 - Permanent Redirect`
+  - Destination: `https://www.skyesummithomes.com/$1`
+- **Why**: This handles redirects at Cloudflare's edge (faster than Vercel) and ensures all traffic goes to www
 
-### Step 2: Create Redirect Rule for HTTP
-1. Click **Create rule**
-2. **URL Pattern**: `http://skyesummithomes.com/*`
-3. **Then the settings are**:
-   - **Forwarding URL** → **301 Permanent Redirect**
-   - **Destination URL**: `https://www.skyesummithomes.com/$1`
-4. Click **Save**
+**Rule 2: Force HTTPS on Non-WWW (Priority 2)**
+- URL Pattern: `http://skyesummithomes.com/*`
+- Settings:
+  - Forwarding URL: `301 - Permanent Redirect`
+  - Destination: `https://www.skyesummithomes.com/$1`
 
-### Step 3: Create Redirect Rule for HTTPS
-1. Click **Create rule** again
-2. **URL Pattern**: `https://skyesummithomes.com/*`
-3. **Then the settings are**:
-   - **Forwarding URL** → **301 Permanent Redirect**
-   - **Destination URL**: `https://www.skyesummithomes.com/$1`
-4. Click **Save**
+**Rule 3: Cache Static Assets (Performance)**
+- URL Pattern: `www.skyesummithomes.com/*.css`
+- Settings:
+  - Cache Level: Cache Everything
+  - Edge Cache TTL: 1 month
 
-### Step 4: Verify
-1. Test `http://skyesummithomes.com` → Should redirect to `https://www.skyesummithomes.com`
-2. Test `https://skyesummithomes.com` → Should redirect to `https://www.skyesummithomes.com`
-3. Test `https://www.skyesummithomes.com` → Should load normally
+**Rule 4: Cache Images (Performance)**
+- URL Pattern: `www.skyesummithomes.com/images/*`
+- Settings:
+  - Cache Level: Cache Everything
+  - Edge Cache TTL: 1 month
 
-## SSL/TLS Settings (Important for SEO)
+## DNS Records Summary (After Changes)
 
-1. **Go to SSL/TLS** in Cloudflare dashboard
-2. **Encryption mode**: Set to **Full (strict)**
-   - This ensures HTTPS is properly enforced
-3. **Always Use HTTPS**: Enable
-   - Automatically redirects HTTP → HTTPS
+### Required Records:
 
-## Additional SEO Enhancements
+1. **Root Domain (A or CNAME)**
+   - Type: A or CNAME
+   - Name: `skyesummithomes.com` (or `@`)
+   - Target: Vercel IP or `cname.vercel-dns.com`
+   - Proxy: DNS only
+   - TTL: Auto
 
-### 1. Enable Cloudflare Speed Optimizations
-- **Speed** → **Optimization**
-- Enable **Auto Minify** (HTML, CSS, JavaScript)
-- Enable **Brotli** compression
-- Enable **Rocket Loader** (optional, test first)
+2. **WWW Subdomain (CNAME)**
+   - Type: CNAME
+   - Name: `www`
+   - Target: `1e88402ffbe247ac.vercel-dns-017.com` (keep current)
+   - Proxy: DNS only
+   - TTL: Auto
 
-### 2. Enable Caching (Optional)
-- **Caching** → **Configuration**
-- Set **Browser Cache TTL** to **4 hours** (or match your needs)
-- **Note**: Vercel already handles caching, so this is optional
+3. **Email Records (MX)** - Keep as is
+   - route1.mx.cloudflare.net (Priority 38)
+   - route2.mx.cloudflare.net (Priority 5)
+   - route3.mx.cloudflare.net (Priority 28)
 
-### 3. Security Headers (Already in vercel.json)
-- Your `vercel.json` already includes security headers
-- Cloudflare can add additional headers if needed
+4. **SPF Record (TXT)** - Keep as is
+   - `"v=spf1 include:_spf.mx.cloudflare.net ~all"`
 
-## Testing After Changes
+5. **DMARC Record (TXT)** - Keep as is
+   - `v=DMARC1; p=none; rua=mailto:DrJanSells@ReverenceSummerlinHomes.com; ruf=mailto:DrJanSells@ReverenceSummerlinHomes.com; fo=1`
 
-### 1. Test Redirects
-```bash
-# Test HTTP root → HTTPS www
-curl -I http://skyesummithomes.com
+6. **DKIM Record (TXT)** - Keep as is
+   - cf2024-1._domainkey
 
-# Test HTTPS root → HTTPS www  
-curl -I https://skyesummithomes.com
+7. **Google Verification (TXT)** - Keep as is
+   - `google-site-verification=wKOftY7ctL98xgE1EW2r-2pYqOXyN109r4ZLLiRwQsI`
 
-# Test www (should return 200)
-curl -I https://www.skyesummithomes.com
-```
+8. **Vercel Verification (TXT)** - Keep as is
+   - Both `_vercel` records
 
-### 2. Check in Google Search Console
-1. Go to **Settings** → **Domain property**
-2. Add both `skyesummithomes.com` and `www.skyesummithomes.com` if not already added
-3. Set `www.skyesummithomes.com` as preferred domain
-4. Request re-indexing after changes
+## Verification Steps
 
-### 3. Verify Canonical URLs
-- All pages should have `<link rel="canonical" href="https://www.skyesummithomes.com/...">`
-- ✅ Already updated in all HTML files
+After making changes:
 
-## Expected Results
+1. **Test Redirects:**
+   ```bash
+   curl -I http://skyesummithomes.com
+   curl -I https://skyesummithomes.com
+   curl -I http://www.skyesummithomes.com
+   curl -I https://www.skyesummithomes.com
+   ```
+   All should redirect to `https://www.skyesummithomes.com` with 301 status.
 
-After implementing Page Rules:
-- ✅ `http://skyesummithomes.com` → `https://www.skyesummithomes.com` (301)
-- ✅ `https://skyesummithomes.com` → `https://www.skyesummithomes.com` (301)
-- ✅ `https://www.skyesummithomes.com` → Loads normally (200)
-- ✅ Google will consolidate signals to www version
-- ✅ "Page with redirect" issue in Search Console should resolve
+2. **Check SSL:**
+   - Visit: https://www.ssllabs.com/ssltest/analyze.html?d=www.skyesummithomes.com
+   - Should get A or A+ rating
 
-## Timeline
+3. **Verify DNS Propagation:**
+   - Use: https://www.whatsmydns.net/#A/skyesummithomes.com
+   - Check: https://dnschecker.org/
 
-1. **Immediate**: Add Cloudflare Page Rules (5 minutes)
-2. **Within 24 hours**: Test redirects work correctly
-3. **Within 1 week**: Google should re-crawl and update indexing
-4. **Within 2-4 weeks**: Redirect issue should clear in Search Console
+4. **Test in Google Search Console:**
+   - Request indexing for `https://www.skyesummithomes.com/`
+   - Monitor "Page with redirect" issue - should clear within 1-2 weeks
 
-## Notes
+## Important Notes
 
-- **DNS Propagation**: Changes take effect immediately with Cloudflare
-- **Google Re-crawl**: May take 1-2 weeks to fully update
-- **Search Console**: The redirect issue will clear once Google re-crawls
-- **Canonical URLs**: Already set correctly in all pages ✅
+- **DNS Propagation**: Changes can take 24-48 hours to fully propagate
+- **Cloudflare Proxy**: Keep DNS records on "DNS only" (gray cloud) for root domain to avoid conflicts with Vercel
+- **Vercel Configuration**: Ensure both `skyesummithomes.com` and `www.skyesummithomes.com` are added in Vercel dashboard
+- **Canonical URLs**: All pages now use `www.skyesummithomes.com` as canonical (already updated)
+
+## Next Steps After DNS Update
+
+1. Wait 24-48 hours for DNS propagation
+2. Test all redirects manually
+3. Submit updated sitemap to Google Search Console: `https://www.skyesummithomes.com/sitemap.xml`
+4. Request re-indexing of homepage in Search Console
+5. Monitor "Page with redirect" issue - should resolve automatically
 
 ---
 
-**Next Steps**: 
-1. Add Cloudflare Page Rules (see Step-by-Step above)
-2. Test redirects
-3. Monitor Google Search Console for resolution
-
+**Last Updated**: January 2025
