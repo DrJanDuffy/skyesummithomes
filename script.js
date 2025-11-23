@@ -1,5 +1,47 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const header = document.querySelector('.header');
+    
+    if (mobileMenuToggle && navMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('mobile-menu-active');
+            this.classList.toggle('mobile-menu-open');
+            
+            // Prevent body scroll when menu is open
+            if (!isExpanded) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('mobile-menu-active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.classList.remove('mobile-menu-open');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!header.contains(e.target) && navMenu.classList.contains('mobile-menu-active')) {
+                navMenu.classList.remove('mobile-menu-active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.classList.remove('mobile-menu-open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
     // Smooth scrolling for anchor links
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -75,11 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Header scroll effect
-    const header = document.querySelector('.header');
+    // Header scroll effect with performance optimization
     let lastScrollTop = 0;
+    let ticking = false;
     
-    window.addEventListener('scroll', function() {
+    function updateHeader() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > lastScrollTop && scrollTop > 100) {
@@ -90,8 +132,23 @@ document.addEventListener('DOMContentLoaded', function() {
             header.style.transform = 'translateY(0)';
         }
         
+        // Add shadow on scroll
+        if (scrollTop > 50) {
+            header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        } else {
+            header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+        }
+        
         lastScrollTop = scrollTop;
-    });
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }, { passive: true });
 
     // Contact form simulation
     const contactLinks = document.querySelectorAll('a[href="#contact"]');
@@ -108,6 +165,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize any additional features
     initializeAnimations();
+    
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // FAQ Accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const answer = document.getElementById(this.getAttribute('aria-controls'));
+            
+            // Close all other FAQ items
+            faqQuestions.forEach(q => {
+                if (q !== this) {
+                    q.setAttribute('aria-expanded', 'false');
+                    const otherAnswer = document.getElementById(q.getAttribute('aria-controls'));
+                    if (otherAnswer) {
+                        otherAnswer.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Toggle current FAQ item
+            this.setAttribute('aria-expanded', !isExpanded);
+            if (answer) {
+                answer.classList.toggle('active');
+            }
+        });
+    });
 });
 
 // Contact modal function
@@ -235,6 +337,45 @@ if (document.readyState === 'loading') {
 } else {
     lazyLoadImages();
 }
+
+// Loading state for RealScout widget
+function showLoadingState() {
+    const widget = document.querySelector('realscout-office-listings');
+    if (widget && !customElements.get('realscout-office-listings')) {
+        widget.style.opacity = '0.5';
+        widget.style.pointerEvents = 'none';
+    }
+}
+
+// Hide loading state when widget is ready
+function hideLoadingState() {
+    const widget = document.querySelector('realscout-office-listings');
+    if (widget) {
+        widget.style.opacity = '1';
+        widget.style.pointerEvents = 'auto';
+    }
+}
+
+// Monitor widget loading
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showLoadingState);
+} else {
+    showLoadingState();
+}
+
+// Check if widget is loaded
+const checkWidgetLoaded = setInterval(() => {
+    if (customElements.get('realscout-office-listings')) {
+        hideLoadingState();
+        clearInterval(checkWidgetLoaded);
+    }
+}, 500);
+
+// Timeout after 10 seconds
+setTimeout(() => {
+    clearInterval(checkWidgetLoaded);
+    hideLoadingState();
+}, 10000);
 
 // Review request functionality
 const reviewRequestBtn = document.getElementById('review-request-btn');

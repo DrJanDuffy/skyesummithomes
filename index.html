@@ -7,7 +7,13 @@
     <meta name="description" content="Find your dream home in Skye Summit Las Vegas - the newest elevated community. Expert guidance from Dr. Jan Duffy, REALTOR® with 30+ years experience. View Skye Summit listings, amenities, and market insights.">
     <meta name="keywords" content="Skye Summit, Skye Summit Las Vegas, Skye Summit homes, Skye Summit real estate, Skye Summit listings, Skye Summit community, Las Vegas real estate, new construction, elevated community, Dr. Jan Duffy, REALTOR, Berkshire Hathaway">
     <meta name="author" content="Dr. Jan Duffy, REALTOR®">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="US-NV">
+    <meta name="geo.placename" content="Las Vegas">
+    <meta name="geo.position" content="36.1699;-115.1398">
+    <meta name="ICBM" content="36.1699, -115.1398">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -25,6 +31,9 @@
     
     <title>Skye Summit Las Vegas Real Estate & New Homes | Dr. Jan Duffy, REALTOR®</title>
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://skyesummithomes.com/">
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="script.js" as="script">
@@ -32,8 +41,14 @@
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://em.realscout.com">
+    
+    <!-- Preconnect for critical third-party resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://em.realscout.com" crossorigin>
     
     <!-- External CSS with fallback -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -88,6 +103,17 @@
     
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed'));
+            });
+        }
+    </script>
     
     <!-- RealEstateAgent Schema -->
     <script type="application/ld+json">
@@ -321,6 +347,90 @@
       "description": "Skye Summit Las Vegas real estate specialist with 30+ years of experience"
     }
     </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://skyesummithomes.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Skye Summit Listings",
+          "item": "https://skyesummithomes.com/#listings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "About Dr. Jan Duffy",
+          "item": "https://skyesummithomes.com/#about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://skyesummithomes.com/#contact"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Skye Summit Las Vegas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skye Summit is a master-planned elevated community in northwest Las Vegas, located at 3,200 feet elevation. It features new construction homes with panoramic views, modern designs, and an active lifestyle with parks and trail systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services does Dr. Jan Duffy provide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dr. Jan Duffy provides comprehensive real estate services including home buying, home selling, new construction consultation, market analysis, and investment guidance for Skye Summit and Las Vegas properties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I view Skye Summit listings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can view current Skye Summit listings on this website using our RealScout widget, or contact Dr. Jan Duffy directly at (702) 930-8222 for personalized property searches and consultations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes Skye Summit different from other Las Vegas communities?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Skye Summit offers elevated living at 3,200 feet with unmatched valley views, brand-new construction homes, integrated parks and trails, and a thoughtfully planned community in the growing Centennial Hills area."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I schedule a consultation with Dr. Jan Duffy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can schedule a free consultation by calling (702) 930-8222, emailing DrJanSells@SkyeSummitHomes.com, or using the contact form on this website. Dr. Jan Duffy offers personalized guidance for your real estate needs."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
@@ -479,7 +589,61 @@
             </div>
         </section>
 
-        <!-- Section 6: Market Insights -->
+        <!-- Section 6: FAQ Section -->
+        <section class="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <h2 id="faq-title">Frequently Asked Questions About Skye Summit Real Estate</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                            <span>What is Skye Summit Las Vegas?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-1" role="region">
+                            <p>Skye Summit is a master-planned elevated community in northwest Las Vegas, located at 3,200 feet elevation. It features new construction homes with panoramic views, modern designs, and an active lifestyle with parks and trail systems.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                            <span>What services does Dr. Jan Duffy provide?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-2" role="region">
+                            <p>Dr. Jan Duffy provides comprehensive real estate services including home buying, home selling, new construction consultation, market analysis, and investment guidance for Skye Summit and Las Vegas properties.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                            <span>How can I view Skye Summit listings?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-3" role="region">
+                            <p>You can view current Skye Summit listings on this website using our RealScout widget, or contact Dr. Jan Duffy directly at (702) 930-8222 for personalized property searches and consultations.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                            <span>What makes Skye Summit different from other Las Vegas communities?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-4" role="region">
+                            <p>Skye Summit offers elevated living at 3,200 feet with unmatched valley views, brand-new construction homes, integrated parks and trails, and a thoughtfully planned community in the growing Centennial Hills area.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                            <span>How do I schedule a consultation with Dr. Jan Duffy?</span>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer" id="faq-answer-5" role="region">
+                            <p>You can schedule a free consultation by calling (702) 930-8222, emailing DrJanSells@SkyeSummitHomes.com, or using the contact form on this website. Dr. Jan Duffy offers personalized guidance for your real estate needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Market Insights -->
         <section class="insights" aria-labelledby="insights-title">
             <div class="container">
                 <h2 id="insights-title">Skye Summit Las Vegas Real Estate News & Market Updates</h2>
