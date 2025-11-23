@@ -346,9 +346,14 @@
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
             
+            // Hide previous messages
+            messageDiv.style.display = 'none';
+            messageDiv.className = 'form-message';
+            
             // Disable button and show loading state
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
+            form.classList.add('form-loading');
             
             // Collect form data
             const formData = new FormData(form);
@@ -372,10 +377,6 @@
                 serviceInterest: 'Valuation Request'
             };
             
-            // Show message container
-            const messageDiv = document.getElementById('form-message');
-            messageDiv.style.display = 'none';
-            
             try {
                 const response = await fetch('/api/followupboss', {
                     method: 'POST',
@@ -390,30 +391,31 @@
                 if (result.success) {
                     // Show success message
                     messageDiv.className = 'form-message success';
-                    messageDiv.textContent = result.message || 'Thank you! Your valuation request has been submitted. Dr. Jan will contact you within 24 hours.';
-                    messageDiv.style.display = 'block';
+                    messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> ' + (result.message || 'Thank you! Your valuation request has been submitted. Dr. Jan will contact you within 24 hours.');
+                    messageDiv.style.display = 'flex';
+                    form.reset();
                     
-                    // Reset form after 2 seconds
-                    setTimeout(() => {
-                        form.reset();
-                        messageDiv.style.display = 'none';
-                    }, 5000);
+                    // Scroll to message
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
                     // Show error message
                     messageDiv.className = 'form-message error';
-                    messageDiv.innerHTML = result.error || 'There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.';
-                    messageDiv.style.display = 'block';
+                    messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (result.error || 'There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.');
+                    messageDiv.style.display = 'flex';
+                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
                 // Show error message
                 messageDiv.className = 'form-message error';
-                messageDiv.innerHTML = 'There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.';
-                messageDiv.style.display = 'block';
+                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.';
+                messageDiv.style.display = 'flex';
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } finally {
                 // Re-enable button
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
+                form.classList.remove('form-loading');
             }
         });
     </script>
