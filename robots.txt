@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://skyesummithomes.com/sitemap.xml
+Sitemap: https://www.skyesummithomes.com/sitemap.xml
 
 # Crawl delay (optional - helps with server load)
 Crawl-delay: 1
