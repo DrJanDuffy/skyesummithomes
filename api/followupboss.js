@@ -36,7 +36,23 @@ export default async function handler(request, response) {
     // Validate required fields
     if (!email || !phone) {
       return response.status(400).json({ 
-        error: 'Email and phone are required' 
+        error: 'Email and phone number are required fields.' 
+      });
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return response.status(400).json({ 
+        error: 'Please enter a valid email address.' 
+      });
+    }
+
+    // Basic phone validation (at least 10 digits)
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      return response.status(400).json({ 
+        error: 'Please enter a valid phone number.' 
       });
     }
 

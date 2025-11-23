@@ -255,8 +255,9 @@
                         <label for="notes">Additional Notes (optional)</label>
                         <textarea id="notes" name="notes" rows="4" placeholder="Any other details about your home..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-large">Get My Free Valuation</button>
+                    <button type="submit" class="btn btn-primary btn-large" id="valuation-submit-btn">Get My Free Valuation</button>
                     <p class="form-note">Your information is confidential. We'll never share your details.</p>
+                    <div id="form-message" class="form-message" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 6px;"></div>
                 </form>
             </div>
         </section>
@@ -370,6 +371,10 @@
                 serviceInterest: 'Valuation Request'
             };
             
+            // Show message container
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.style.display = 'none';
+            
             try {
                 const response = await fetch('/api/followupboss', {
                     method: 'POST',
@@ -383,14 +388,27 @@
                 
                 if (result.success) {
                     // Show success message
-                    alert(result.message || 'Thank you! Your valuation request has been submitted. Dr. Jan will contact you within 24 hours.');
-                    form.reset();
+                    messageDiv.className = 'form-message success';
+                    messageDiv.textContent = result.message || 'Thank you! Your valuation request has been submitted. Dr. Jan will contact you within 24 hours.';
+                    messageDiv.style.display = 'block';
+                    
+                    // Reset form after 2 seconds
+                    setTimeout(() => {
+                        form.reset();
+                        messageDiv.style.display = 'none';
+                    }, 5000);
                 } else {
-                    alert(result.error || 'There was an error submitting your request. Please call (702) 930-8222 directly.');
+                    // Show error message
+                    messageDiv.className = 'form-message error';
+                    messageDiv.innerHTML = result.error || 'There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.';
+                    messageDiv.style.display = 'block';
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
-                alert('There was an error submitting your request. Please call (702) 930-8222 directly.');
+                // Show error message
+                messageDiv.className = 'form-message error';
+                messageDiv.innerHTML = 'There was an error submitting your request. Please call <a href="tel:+17029308222">(702) 930-8222</a> directly.';
+                messageDiv.style.display = 'block';
             } finally {
                 // Re-enable button
                 submitButton.disabled = false;
