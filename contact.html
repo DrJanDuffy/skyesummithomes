@@ -299,12 +299,57 @@
 
     <script src="script.js"></script>
     <script>
-        // Form submission handler
-        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+        // Form submission handler with Follow Up Boss integration
+        document.getElementById('consultation-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            // Here you would integrate with Follow Up Boss CRM
-            alert('Thank you! Your consultation request has been submitted. Dr. Jan will contact you within 2 hours.');
-            this.reset();
+            
+            const form = this;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            const data = {
+                firstName: formData.get('name')?.split(' ')[0] || '',
+                lastName: formData.get('name')?.split(' ').slice(1).join(' ') || '',
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                serviceInterest: formData.get('service-interest'),
+                timeline: formData.get('timeline'),
+                message: formData.get('message')
+            };
+            
+            try {
+                const response = await fetch('/api/followupboss', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    alert(result.message || 'Thank you! Your consultation request has been submitted. Dr. Jan will contact you within 2 hours.');
+                    form.reset();
+                } else {
+                    alert(result.error || 'There was an error submitting your request. Please call (702) 930-8222 directly.');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error submitting your request. Please call (702) 930-8222 directly.');
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
         });
     </script>
 </body>

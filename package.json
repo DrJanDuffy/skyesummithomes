@@ -8,5 +8,11 @@
     "start": "python -m http.server 8080"
   },
   "keywords": ["real-estate", "las-vegas", "property"],
-  "author": "Skye Summit Real Estate"
+  "author": "Skye Summit Real Estate",
+  "dependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  }
 } 
