@@ -562,10 +562,11 @@ function showReviewRequestModal(title, message, reviewUrl) {
 }
 
 /**
- * Calendly: shared widget.js for inline embeds + floating badge (matches official embed snippet).
- * Badge init runs after window load, per Calendly docs.
+ * Calendly: shared widget.css + widget.js for inline embeds, floating badge, and popup links.
+ * Popup: <a href="https://calendly.com/drjanduffy/showing" class="calendly-popup-link">Schedule time with me</a>
  */
-(function initCalendlyBadge() {
+(function initCalendly() {
+    var CALENDLY_DEFAULT_URL = 'https://calendly.com/drjanduffy/showing';
     var CALENDLY_CSS = 'https://assets.calendly.com/assets/external/widget.css';
     var CALENDLY_JS = 'https://assets.calendly.com/assets/external/widget.js';
 
@@ -600,13 +601,35 @@ function showReviewRequestModal(title, message, reviewUrl) {
         if (!window.Calendly || typeof Calendly.initBadgeWidget !== 'function') return;
         window.__calendlyBadgeInit = true;
         Calendly.initBadgeWidget({
-            url: 'https://calendly.com/drjanduffy/showing',
+            url: CALENDLY_DEFAULT_URL,
             text: 'Schedule time with me',
             color: '#0069ff',
             textColor: '#ffffff',
             branding: false
         });
     }
+
+    document.addEventListener('click', function calendlyPopupLinkHandler(e) {
+        var a = e.target.closest('a.calendly-popup-link');
+        if (!a) return;
+        e.preventDefault();
+        var url = a.getAttribute('href') || CALENDLY_DEFAULT_URL;
+        if (!/^https?:\/\//i.test(url)) url = CALENDLY_DEFAULT_URL;
+
+        function openPopup() {
+            if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
+                Calendly.initPopupWidget({ url: url });
+            } else {
+                window.location.href = url;
+            }
+        }
+
+        if (window.Calendly) {
+            openPopup();
+        } else {
+            ensureWidgetScript(openPopup);
+        }
+    });
 
     injectCss();
     ensureWidgetScript(function onCalendlyReady() {

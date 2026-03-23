@@ -96,6 +96,16 @@ body {
     color: #3A8DDE;
 }
 
+.nav-menu a.calendly-popup-link {
+    font-weight: 600;
+    color: #7ecbff;
+}
+
+.nav-menu a.calendly-popup-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 .nav-menu button.nav-services-trigger {
     background: none;
     border: none;
