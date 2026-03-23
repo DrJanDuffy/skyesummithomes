@@ -24,7 +24,7 @@ Replace the placeholder div with:
 ---
 
 ### Agent headshot (About + Home)
-**Files**: `about.html`, `index.html` — use `<img class="agent-headshot agent-headshot--about">` / `agent-headshot--advisor">` with `src="/images/agents/dr-jan-duffy.jpg"`. Additional team photos live in `/images/agents/`.
+**Files**: `about.html`, `index.html` — use `<img class="agent-headshot agent-headshot--about">` / `agent-headshot--advisor">` with `src="/images/agents/dr-jan-duffy.jpg"`. That file must be an **actual photo of Dr. Jan Duffy** (not other agents). Additional team photos stay in `/images/agents/` under their own filenames.
 
 ---
 

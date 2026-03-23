@@ -68,7 +68,7 @@ Follow these steps to complete the website setup and go live.
 
 ### Photos
 1. **Headshot Photo**:
-   - Add `dr-jan-duffy.jpg` under `/images/agents/` (canonical agent headshot URL)
+   - Keep `dr-jan-duffy.jpg` under `/images/agents/` as the **only** Dr. Jan Duffy headshot used on the site (not other agents). Mislabeled files should be renamed (e.g. `kelly-boyle-profile.jpeg`).
    - Update `about.html` line ~81:
    ```html
    <img src="/images/agents/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover;">
