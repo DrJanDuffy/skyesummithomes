@@ -61,28 +61,45 @@ body {
     padding: 0 20px;
 }
 
-.nav-brand .nav-brand-title {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
+.nav-brand {
+    display: flex;
+    align-items: center;
 }
 
-.nav-brand .nav-brand-title a {
-    color: #FFE066;
+.nav-logo {
+    display: inline-block;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
 }
 
-.nav-brand .nav-brand-title a:hover {
-    color: #FFF3B0;
-    text-decoration: underline;
+.nav-logo:hover .nav-logo-skye,
+.nav-logo:focus .nav-logo-skye {
+    color: #ffffff;
+}
+
+.nav-logo:hover .nav-logo-summit,
+.nav-logo:focus .nav-logo-summit {
+    color: #7ecbff;
+}
+
+.nav-logo-skye {
+    color: #ffffff;
+}
+
+.nav-logo-summit {
+    color: #5eb8ff;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .nav-menu a {
@@ -96,14 +113,13 @@ body {
     color: #3A8DDE;
 }
 
-.nav-menu a.calendly-popup-link {
+.nav-menu a.active {
     font-weight: 600;
     color: #7ecbff;
 }
 
-.nav-menu a.calendly-popup-link:hover {
-    color: #ffffff;
-    text-decoration: underline;
+#lifestyle-section {
+    scroll-margin-top: 96px;
 }
 
 .nav-menu button.nav-services-trigger {
