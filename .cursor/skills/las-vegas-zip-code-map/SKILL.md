@@ -83,7 +83,7 @@ Add both URLs to **`sitemap.xml`**.
 
 ## Internal discovery
 
-Link from **Communities** (or market) page and **footer** “Quick links” to the zip map route.
+Link from **Communities** (or market) page hero and from **every** shared footer “Quick links” block (same anchor text site-wide, e.g. “Las Vegas zip code map”) so crawlers and users find the route from any page.
 
 ## Next.js adaptation checklist
 
