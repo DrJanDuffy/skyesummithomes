@@ -63,6 +63,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/community">Communities</a></li>
+                <li><a href="/las-vegas-zip-code-map/">Zip map</a></li>
                 <li><a href="/community#lifestyle-section">Lifestyle</a></li>
                 <li><a href="/homes-for-sale-skye-summit">Available Homes</a></li>
                 <li><a href="/blog">Blog</a></li>
@@ -83,6 +84,7 @@
                 <div class="hero-cta hero-cta-primary">
                     <a href="/#listings" class="btn btn-secondary btn-large">Browse Skye Summit Listings</a>
                     <a href="/contact" class="btn btn-primary btn-large">Get Pre-Qualified & Schedule Consultation</a>
+                    <a href="#mortgage-estimator" class="btn btn-secondary btn-large">Payment estimate</a>
                     <p class="hero-phone">Call now: <a href="tel:+17029308222">(702) 930-8222</a></p>
                 </div>
             </div>
@@ -223,7 +225,7 @@
         </section>
 
         <!-- Financing Section -->
-        <section class="value-section">
+        <section class="value-section" id="mortgage-estimator">
             <div class="container">
                 <h2>Financing & Pre-Approval Guidance</h2>
                 <p class="lead-text">What to know before you start searching in Skye Summit:</p>
@@ -240,6 +242,81 @@
                         <h3><i class="fas fa-handshake"></i> Builder Financing</h3>
                         <p>Many Skye Summit builders offer incentives with preferred lenders. I'll help you navigate builder financing options to maximize your benefits.</p>
                     </div>
+                </div>
+
+                <div class="mortgage-calculator" role="region" aria-labelledby="mortgage-calc-heading">
+                    <h3 id="mortgage-calc-heading">Quick monthly payment estimate</h3>
+                    <p class="mortgage-calculator__disclaimer">Principal and interest only—not a loan quote or lending commitment. Add optional monthly taxes, insurance, and HOA below for a rough total.</p>
+                    <div class="mortgage-calculator__grid">
+                        <div class="form-group">
+                            <label for="mc-price">Home price</label>
+                            <input type="number" id="mc-price" min="0" step="1000" value="850000" inputmode="numeric">
+                        </div>
+                        <div class="form-group">
+                            <label for="mc-down">Down payment (%)</label>
+                            <input type="number" id="mc-down" min="0" max="100" step="0.5" value="20" inputmode="decimal">
+                        </div>
+                        <div class="form-group">
+                            <label for="mc-rate">Interest rate (annual %)</label>
+                            <input type="number" id="mc-rate" min="0" step="0.125" value="6.5" inputmode="decimal">
+                        </div>
+                        <div class="form-group">
+                            <label for="mc-term">Loan term (years)</label>
+                            <select id="mc-term">
+                                <option value="30" selected>30</option>
+                                <option value="20">20</option>
+                                <option value="15">15</option>
+                            </select>
+                        </div>
+                        <div class="form-group mortgage-calculator__fullrow">
+                            <label for="mc-extra">Est. monthly taxes + insurance + HOA (optional)</label>
+                            <input type="number" id="mc-extra" min="0" step="50" value="0" inputmode="numeric">
+                        </div>
+                    </div>
+                    <p class="mortgage-calculator__result" aria-live="polite"><strong>Estimated P&amp;I:</strong> <span id="mc-pi">—</span>/mo &nbsp; · &nbsp; <strong>with optional extras:</strong> <span id="mc-total">—</span>/mo</p>
+                </div>
+                <script>
+                (function () {
+                  function parseNum(id) { var el = document.getElementById(id); return el && el.value !== '' ? parseFloat(el.value, 10) : 0; }
+                  function fmt(n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n); }
+                  function calc() {
+                    var price = parseNum('mc-price');
+                    var downPct = parseNum('mc-down') / 100;
+                    var rateAnnual = parseNum('mc-rate') / 100;
+                    var years = parseInt(document.getElementById('mc-term').value, 10) || 30;
+                    var extra = parseNum('mc-extra');
+                    var loan = Math.max(0, price * (1 - downPct));
+                    var n = years * 12;
+                    var r = rateAnnual / 12;
+                    var pi = 0;
+                    if (loan > 0 && r > 0) {
+                      pi = loan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                    } else if (loan > 0 && r === 0) {
+                      pi = loan / n;
+                    }
+                    var total = pi + extra;
+                    document.getElementById('mc-pi').textContent = fmt(pi);
+                    document.getElementById('mc-total').textContent = fmt(total);
+                  }
+                  ['mc-price','mc-down','mc-rate','mc-extra'].forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); }
+                  });
+                  var termEl = document.getElementById('mc-term');
+                  if (termEl) { termEl.addEventListener('change', calc); }
+                  calc();
+                })();
+                </script>
+            </div>
+        </section>
+
+        <section class="reviews-map-section" aria-labelledby="reviews-map-heading">
+            <div class="container">
+                <h2 id="reviews-map-heading">Google reviews &amp; office</h2>
+                <p class="lead-text">See verified client feedback on Google and get directions to the office.</p>
+                <p><a href="https://share.google/yoVmGzrpTUtHrvsnL" target="_blank" rel="noopener" class="btn btn-primary btn-large">Read reviews on Google</a></p>
+                <div class="gbp-map-embed">
+                    <iframe title="Office location — Berkshire Hathaway HomeServices, Las Vegas" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="280" src="https://www.google.com/maps?q=11411+Southern+Highlands+Pkwy+%23300+Las+Vegas+NV+89141&amp;output=embed"></iframe>
                 </div>
             </div>
         </section>
@@ -310,10 +387,9 @@
                 <div class="footer-section">
                     <h4>Follow Me</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="Follow Dr. Jan Duffy on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Connect with Dr. Jan Duffy on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Follow Dr. Jan Duffy on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://share.google/yoVmGzrpTUtHrvsnL" target="_blank" rel="noopener" aria-label="Dr. Jan Duffy on Google Business Profile"><i class="fab fa-google" aria-hidden="true"></i></a>
                     </div>
+                    <p class="footer-social-note">Reviews &amp; updates on <a href="https://share.google/yoVmGzrpTUtHrvsnL" target="_blank" rel="noopener">Google</a></p>
                 </div>
                 <div class="footer-section">
                     <h4>Google Business Profile</h4>
@@ -341,6 +417,12 @@
             </div>
         </div>
     </footer>
+
+    <aside class="mobile-buyer-bar" aria-label="Quick buyer actions">
+        <a class="mobile-buyer-bar__call" href="tel:+17029308222"><i class="fas fa-phone" aria-hidden="true"></i> Call</a>
+        <a class="mobile-buyer-bar__listings" href="/#listings">Listings</a>
+        <a class="mobile-buyer-bar__contact" href="/contact">Book</a>
+    </aside>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>

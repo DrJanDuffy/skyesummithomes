@@ -2612,6 +2612,168 @@ realscout-office-listings {
     }
 }
 
+/* Buyer engagement: listing hint, mobile CTA bar, mortgage tool */
+.listings-widget-hint {
+    font-size: 0.95rem;
+    color: #4a5568;
+    max-width: 48rem;
+    margin: 0 auto 1rem;
+    line-height: 1.55;
+}
+
+.footer-social-note {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 0.5rem;
+}
+
+.footer-social-note a {
+    color: #7dd3fc;
+    font-weight: 600;
+}
+
+.footer-social-note a:hover {
+    text-decoration: underline;
+}
+
+.mobile-buyer-bar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body:has(.mobile-buyer-bar) {
+        padding-bottom: 3.75rem;
+    }
+
+    .mobile-buyer-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9998;
+        background: rgba(10, 37, 64, 0.98);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom, 0));
+        justify-content: stretch;
+        align-items: stretch;
+        gap: 0.35rem;
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .mobile-buyer-bar a {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.8125rem;
+        padding: 0.55rem 0.35rem;
+        border-radius: 0.5rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .mobile-buyer-bar__call {
+        background: #059669;
+    }
+
+    .mobile-buyer-bar__listings {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile-buyer-bar__contact {
+        background: #3A8DDE;
+    }
+
+    body:has(.mobile-buyer-bar) .back-to-top.visible {
+        bottom: 5.25rem;
+    }
+}
+
+.mortgage-calculator {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.mortgage-calculator h3 {
+    margin-top: 0;
+    color: #0A2540;
+}
+
+.mortgage-calculator__disclaimer {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.mortgage-calculator__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.mortgage-calculator__fullrow {
+    grid-column: 1 / -1;
+}
+
+.mortgage-calculator .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.35rem;
+}
+
+.mortgage-calculator .form-group input,
+.mortgage-calculator .form-group select {
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.mortgage-calculator__result {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #0A2540;
+}
+
+.reviews-map-section {
+    padding: 3rem 0;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.reviews-map-section .lead-text {
+    margin-bottom: 1rem;
+}
+
+.gbp-map-embed {
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    max-width: 720px;
+}
+
+.gbp-map-embed iframe {
+    display: block;
+    width: 100%;
+    min-height: 260px;
+}
+
 /* RealScout widget (homepage listings) */
 realscout-office-listings {
     --rs-listing-divider-color: rgb(101, 141, 172);
