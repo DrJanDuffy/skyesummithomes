@@ -864,22 +864,6 @@ realscout-office-listings {
     text-align: center;
 }
 
-.headshot-placeholder {
-    width: 200px;
-    height: 200px;
-    background: #3A8DDE;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.headshot-placeholder i {
-    font-size: 4rem;
-    color: white;
-}
-
 .agent-headshot {
     display: block;
     border-radius: 50%;
@@ -2015,29 +1999,6 @@ realscout-office-listings {
 
 .about-image {
     text-align: center;
-}
-
-.headshot-placeholder {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, #3A8DDE 0%, #0A2540 100%);
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    color: white;
-}
-
-.headshot-placeholder i {
-    font-size: 6rem;
-    margin-bottom: 1rem;
-}
-
-.headshot-placeholder p {
-    font-size: 1rem;
-    margin: 0;
 }
 
 .about-text h2 {
