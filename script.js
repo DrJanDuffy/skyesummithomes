@@ -559,4 +559,61 @@ function showReviewRequestModal(title, message, reviewUrl) {
             style.remove();
         }
     });
-} 
+}
+
+/**
+ * Calendly: shared widget.js for inline embeds + floating badge (matches official embed snippet).
+ * Badge init runs after window load, per Calendly docs.
+ */
+(function initCalendlyBadge() {
+    var CALENDLY_CSS = 'https://assets.calendly.com/assets/external/widget.css';
+    var CALENDLY_JS = 'https://assets.calendly.com/assets/external/widget.js';
+
+    function injectCss() {
+        if (document.querySelector('link[href="' + CALENDLY_CSS + '"]')) return;
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = CALENDLY_CSS;
+        document.head.appendChild(link);
+    }
+
+    function ensureWidgetScript(done) {
+        if (window.Calendly) {
+            done();
+            return;
+        }
+        var existing = document.querySelector('script[src="' + CALENDLY_JS + '"]');
+        if (existing) {
+            if (window.Calendly) done();
+            else existing.addEventListener('load', done);
+            return;
+        }
+        var s = document.createElement('script');
+        s.src = CALENDLY_JS;
+        s.async = true;
+        s.onload = done;
+        document.body.appendChild(s);
+    }
+
+    function initBadge() {
+        if (window.__calendlyBadgeInit) return;
+        if (!window.Calendly || typeof Calendly.initBadgeWidget !== 'function') return;
+        window.__calendlyBadgeInit = true;
+        Calendly.initBadgeWidget({
+            url: 'https://calendly.com/drjanduffy/showing',
+            text: 'Schedule time with me',
+            color: '#0069ff',
+            textColor: '#ffffff',
+            branding: false
+        });
+    }
+
+    injectCss();
+    ensureWidgetScript(function onCalendlyReady() {
+        if (document.readyState === 'complete') {
+            initBadge();
+        } else {
+            window.addEventListener('load', initBadge);
+        }
+    });
+})();
