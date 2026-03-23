@@ -109,9 +109,9 @@ function generateFooter() {
                 <div class="footer-bottom">
                     <p>&copy; 2025 Dr. Jan Duffy, REALTOR® S.0197614.LLC. All rights reserved.</p>
                     <div class="footer-legal">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Use</a>
-                        <a href="#">MLS Disclaimer</a>
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/terms">Terms of Use</a>
+                        <a href="/mls-disclaimer">MLS Disclaimer</a>
                     </div>
                 </div>
             </div>

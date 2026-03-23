@@ -18,6 +18,29 @@ body {
     padding: 0 20px;
 }
 
+/* Legal / policy pages */
+.legal-content {
+    max-width: 800px;
+}
+.legal-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #0A2540;
+}
+.legal-content p,
+.legal-content ul {
+    margin-bottom: 1rem;
+}
+.legal-content ul {
+    padding-left: 1.5rem;
+}
+.legal-content li {
+    margin-bottom: 0.5rem;
+}
+.legal-content a {
+    color: #3A8DDE;
+}
+
 /* Header Styles */
 .header {
     background: #0A2540;
@@ -38,20 +61,22 @@ body {
     padding: 0 20px;
 }
 
-.nav-brand h2 {
+.nav-brand .nav-brand-title {
     color: white;
     font-size: 1.5rem;
     font-weight: 600;
+    margin: 0;
 }
 
-.nav-brand h2 a {
-    color: #FFD700;
+.nav-brand .nav-brand-title a {
+    color: #FFE066;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.nav-brand h2 a:hover {
-    color: #FFA500;
+.nav-brand .nav-brand-title a:hover {
+    color: #FFF3B0;
+    text-decoration: underline;
 }
 
 .nav-menu {
@@ -69,6 +94,29 @@ body {
 
 .nav-menu a:hover {
     color: #3A8DDE;
+}
+
+.nav-menu button.nav-services-trigger {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nav-menu button.nav-services-trigger:hover {
+    color: #3A8DDE;
+}
+
+.nav-item-has-submenu:focus-within .nav-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 /* Navigation Submenu */
@@ -205,6 +253,13 @@ body {
         padding: 0.75rem 2rem;
         font-size: 1.1rem;
     }
+
+    .nav-menu .nav-services-trigger {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+    }
 }
 
 /* Hero Section */
@@ -236,7 +291,7 @@ body {
 .hero-subtitle {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    color: #F0F4F8;
 }
 
 .hero-buttons {
@@ -282,14 +337,14 @@ body {
     margin-bottom: 1rem;
 }
 
-.service-card h3 {
+.service-card h2.service-card-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     color: #0A2540;
 }
 
 .service-card p {
-    color: #666;
+    color: #454545;
     font-size: 0.95rem;
     margin: 0;
 }
@@ -311,13 +366,13 @@ body {
 }
 
 .hero-phone a {
-    color: #FFD700;
-    text-decoration: none;
+    color: #FFFFFF;
+    text-decoration: underline;
     font-weight: 600;
 }
 
 .hero-phone a:hover {
-    text-decoration: underline;
+    color: #E3F2FD;
 }
 
 .hero-service-links-secondary {
@@ -416,7 +471,7 @@ section {
     font-size: 1.1rem;
     max-width: 800px;
     margin: 0 auto;
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
 }
 
@@ -468,7 +523,7 @@ section {
 }
 
 .service-link-card p {
-    color: #666;
+    color: #4a4a4a;
     font-size: 0.95rem;
     margin: 0;
 }
@@ -568,7 +623,7 @@ realscout-office-listings {
 }
 
 .property-details {
-    color: #666;
+    color: #4a4a4a;
     margin-bottom: 0.5rem;
 }
 
@@ -617,7 +672,7 @@ realscout-office-listings {
 }
 
 .feature p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -667,7 +722,7 @@ realscout-office-listings {
 }
 
 .advisor-text p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
@@ -765,7 +820,7 @@ realscout-office-listings {
 }
 
 .faq-answer p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
     margin: 0;
 }
@@ -807,7 +862,7 @@ realscout-office-listings {
 }
 
 .blog-card p {
-    color: #666;
+    color: #4a4a4a;
     margin-bottom: 1rem;
 }
 
@@ -900,7 +955,7 @@ realscout-office-listings {
 
 .gmb-info p {
     margin: 0;
-    color: #666;
+    color: #4a4a4a;
     font-size: 0.9rem;
 }
 
@@ -1142,7 +1197,7 @@ realscout-office-listings {
 }
 
 .step p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
 }
 
@@ -1167,7 +1222,7 @@ realscout-office-listings {
 
 .lead-text {
     font-size: 1.2rem;
-    color: #666;
+    color: #4a4a4a;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -1188,7 +1243,7 @@ realscout-office-listings {
 
 .testimonial-text {
     font-style: italic;
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
     margin-bottom: 1rem;
     font-size: 1.1rem;
@@ -1261,7 +1316,7 @@ realscout-office-listings {
 
 .comparison-card li {
     padding: 0.75rem 0;
-    color: #666;
+    color: #4a4a4a;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -1308,7 +1363,7 @@ realscout-office-listings {
 }
 
 .profile-card p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1341,7 +1396,7 @@ realscout-office-listings {
 }
 
 .factor-card p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1373,7 +1428,7 @@ realscout-office-listings {
 }
 
 .feature-box p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1456,7 +1511,7 @@ realscout-office-listings {
 
 .form-note {
     text-align: center;
-    color: #666;
+    color: #4a4a4a;
     font-size: 0.9rem;
     margin-top: 1rem;
 }
@@ -1585,7 +1640,7 @@ realscout-office-listings {
 }
 
 .info-box p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1633,7 +1688,7 @@ realscout-office-listings {
 }
 
 .contact-note {
-    color: #666;
+    color: #4a4a4a;
     font-size: 0.9rem;
     margin-top: 0.5rem;
 }
@@ -1679,7 +1734,7 @@ realscout-office-listings {
 }
 
 .hours-card p {
-    color: #666;
+    color: #4a4a4a;
     margin-bottom: 0.5rem;
 }
 
@@ -1689,7 +1744,7 @@ realscout-office-listings {
 
 .hours-note {
     font-size: 0.9rem;
-    color: #999;
+    color: #616161;
     margin-top: 0.5rem;
 }
 
@@ -1783,7 +1838,7 @@ realscout-office-listings {
 }
 
 .about-text p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.8;
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
@@ -1821,7 +1876,7 @@ realscout-office-listings {
 }
 
 .credential-card p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1856,7 +1911,7 @@ realscout-office-listings {
 }
 
 .philosophy-item p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -1911,7 +1966,7 @@ realscout-office-listings {
 }
 
 .stat-box p {
-    color: #666;
+    color: #4a4a4a;
 }
 
 .lifestyle-section {
@@ -1934,7 +1989,7 @@ realscout-office-listings {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    color: #666;
+    color: #4a4a4a;
     transition: all 0.3s ease;
 }
 
@@ -1973,7 +2028,7 @@ realscout-office-listings {
 
 .tab-content li {
     padding: 0.5rem 0;
-    color: #666;
+    color: #4a4a4a;
     padding-left: 1.5rem;
     position: relative;
 }
@@ -2017,7 +2072,7 @@ realscout-office-listings {
 
 .demo-card li {
     padding: 0.5rem 0;
-    color: #666;
+    color: #4a4a4a;
     padding-left: 1.5rem;
     position: relative;
 }
@@ -2033,7 +2088,7 @@ realscout-office-listings {
 .school-note {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #999;
+    color: #616161;
     font-style: italic;
 }
 
@@ -2069,7 +2124,7 @@ realscout-office-listings {
 
 .hoa-card li {
     padding: 0.5rem 0;
-    color: #666;
+    color: #4a4a4a;
     padding-left: 1.5rem;
     position: relative;
 }
@@ -2084,7 +2139,7 @@ realscout-office-listings {
 .hoa-note {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #999;
+    color: #616161;
     font-style: italic;
 }
 
@@ -2119,7 +2174,7 @@ realscout-office-listings {
 }
 
 .safety-card p {
-    color: #666;
+    color: #4a4a4a;
 }
 
 .attractions-section {
@@ -2154,7 +2209,7 @@ realscout-office-listings {
 }
 
 .attraction-card p {
-    color: #666;
+    color: #4a4a4a;
 }
 
 /* Investment & Blog Styles */
@@ -2178,7 +2233,7 @@ realscout-office-listings {
 }
 
 .metric-card p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
 }
 
@@ -2222,7 +2277,7 @@ realscout-office-listings {
 }
 
 .blog-date {
-    color: #666;
+    color: #4a4a4a;
 }
 
 .blog-post-card h2 {
@@ -2232,7 +2287,7 @@ realscout-office-listings {
 }
 
 .blog-post-card p {
-    color: #666;
+    color: #4a4a4a;
     line-height: 1.6;
     margin-bottom: 1rem;
 }
@@ -2355,4 +2410,36 @@ realscout-office-listings {
         flex-direction: column;
         align-items: center;
     }
-} 
+}
+
+/* RealScout widget (homepage listings) */
+realscout-office-listings {
+    --rs-listing-divider-color: rgb(101, 141, 172);
+    width: 100%;
+    min-height: 480px;
+    z-index: 1000;
+    display: block;
+    margin: 2rem 0;
+}
+
+realscout-office-listings::part(listing-card) {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.listings .container:has(realscout-office-listings:not(:defined)) {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f9fc;
+    border-radius: 8px;
+    border: 2px dashed #3A8DDE;
+}
+
+.listings .container:has(realscout-office-listings:not(:defined))::after {
+    content: "Loading Skye Summit Listings...";
+    font-size: 1.2rem;
+    color: #0A2540;
+    font-weight: 600;
+}

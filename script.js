@@ -77,16 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const priceRange = priceSelect.value;
             const beds = bedsSelect.value;
             const baths = bathsSelect.value;
-            
-            // Here you would typically send this data to your backend
-            console.log('Search:', {
-                keywords: searchTerm,
-                priceRange: priceRange,
-                beds: beds,
-                baths: baths
-            });
-            
-            // For now, just show an alert
+            if (typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost') {
+                console.log('Search:', { keywords: searchTerm, priceRange: priceRange, beds: beds, baths: baths });
+            }
             alert('Search functionality will be implemented with backend integration.');
         });
     }

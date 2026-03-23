@@ -10,22 +10,24 @@
       "use": "@vercel/static"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/404",
-      "destination": "/404.html"
-    }
-  ],
   "redirects": [
     {
       "source": "/:path*",
       "has": [
         {
           "type": "host",
+          "value": "skyesummithomes.com"
+        }
+      ],
+      "destination": "https://www.skyesummithomes.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-forwarded-host",
           "value": "skyesummithomes.com"
         }
       ],
@@ -45,6 +47,68 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/community",
+      "destination": "/community.html"
+    },
+    {
+      "source": "/sell",
+      "destination": "/sell.html"
+    },
+    {
+      "source": "/buy",
+      "destination": "/buy.html"
+    },
+    {
+      "source": "/valuation",
+      "destination": "/valuation.html"
+    },
+    {
+      "source": "/invest",
+      "destination": "/invest.html"
+    },
+    {
+      "source": "/relocate",
+      "destination": "/relocate.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/mls-disclaimer",
+      "destination": "/mls-disclaimer.html"
+    },
+    {
+      "source": "/homes-for-sale-skye-summit",
+      "destination": "/homes-for-sale-skye-summit.html"
+    },
+    {
+      "source": "/404",
+      "destination": "/404.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -62,6 +126,42 @@
           "value": "1; mode=block"
         }
       ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/script.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
-} 
+}

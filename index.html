@@ -34,10 +34,11 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.skyesummithomes.com/">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"></noscript>
     
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -50,51 +51,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://em.realscout.com" crossorigin>
     
-    <!-- External CSS with fallback -->
+    <!-- Font Awesome: deferred load -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="styles.css">
+    <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></noscript>
     
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
-    
-    <!-- RealScout Widget Script -->
-    <script src="https://em.realscout.com/widgets/realscout-web-components.umd.js" type="module"></script>
-    
-    <!-- RealScout Widget Styling -->
-    <style>
-      realscout-office-listings {
-        --rs-listing-divider-color: rgb(101, 141, 172);
-        width: 100%;
-        min-height: 480px;
-        z-index: 1000;
-        display: block;
-        margin: 2rem 0;
-      }
-      
-      /* Enhanced accessibility for RealScout widget */
-      realscout-office-listings::part(listing-card) {
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      }
-      
-      /* Fallback styling if widget doesn't load */
-      .listings .container:has(realscout-office-listings:not(:defined)) {
-        min-height: 480px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f7f9fc;
-        border-radius: 8px;
-        border: 2px dashed #3A8DDE;
-      }
-      
-      .listings .container:has(realscout-office-listings:not(:defined))::after {
-        content: "Loading Skye Summit Listings...";
-        font-size: 1.2rem;
-        color: #0A2540;
-        font-weight: 600;
-      }
-    </style>
     
     <!-- Performance hints -->
     <meta name="format-detection" content="telephone=no">
@@ -104,13 +66,11 @@
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     
-    <!-- Service Worker Registration -->
+    <!-- Service Worker Registration (no console in production) -->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker registration failed'));
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function() {});
             });
         }
     </script>
@@ -438,26 +398,26 @@
     
     <!-- Header -->
     <header class="header" role="banner">
-        <nav class="nav" role="navigation" aria-label="Main navigation">
+        <nav class="nav" aria-label="Main navigation">
             <div class="nav-brand">
-                <h2><a href="tel:+17029308222" aria-label="Call Dr. Jan Duffy at 702-930-8222">(702) 930-8222</a></h2>
+                <p class="nav-brand-title"><a href="tel:+17029308222" aria-label="Call Dr. Jan Duffy at 702-930-8222">(702) 930-8222</a></p>
             </div>
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="/" role="menuitem">Home</a></li>
-                <li role="none"><a href="/about" role="menuitem">About</a></li>
-                <li role="none"><a href="/community" role="menuitem">Community</a></li>
-                <li role="none" class="nav-item-has-submenu">
-                    <a href="#" role="menuitem" aria-haspopup="true">Services <i class="fas fa-chevron-down"></i></a>
-                    <ul class="nav-submenu" role="menu">
-                        <li role="none"><a href="/sell" role="menuitem">Sell Your Home</a></li>
-                        <li role="none"><a href="/buy" role="menuitem">Buy in Skye Summit</a></li>
-                        <li role="none"><a href="/valuation" role="menuitem">Free Valuation</a></li>
-                        <li role="none"><a href="/invest" role="menuitem">Investment Strategy</a></li>
-                        <li role="none"><a href="/relocate" role="menuitem">Relocation</a></li>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/community">Community</a></li>
+                <li class="nav-item-has-submenu">
+                    <button type="button" class="nav-services-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-services-submenu" id="nav-services-btn">Services <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+                    <ul class="nav-submenu" id="nav-services-submenu">
+                        <li><a href="/sell">Sell Your Home</a></li>
+                        <li><a href="/buy">Buy in Skye Summit</a></li>
+                        <li><a href="/valuation">Free Valuation</a></li>
+                        <li><a href="/invest">Investment Strategy</a></li>
+                        <li><a href="/relocate">Relocation</a></li>
                     </ul>
                 </li>
-                <li role="none"><a href="/blog" role="menuitem">Blog</a></li>
-                <li role="none"><a href="/contact" role="menuitem">Contact</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                 <span class="hamburger"></span>
@@ -475,17 +435,17 @@
                 <div class="hero-service-links">
                     <a href="/sell" class="service-card">
                         <i class="fas fa-home" aria-hidden="true"></i>
-                        <h3>Selling Your Skye Summit Home?</h3>
+                        <h2 class="service-card-title">Selling Your Skye Summit Home?</h2>
                         <p>Get maximum value with expert pricing & marketing</p>
                     </a>
                     <a href="/buy" class="service-card">
                         <i class="fas fa-key" aria-hidden="true"></i>
-                        <h3>Buying in Skye Summit?</h3>
+                        <h2 class="service-card-title">Buying in Skye Summit?</h2>
                         <p>Find the right home at the right price</p>
                     </a>
                     <a href="/valuation" class="service-card">
                         <i class="fas fa-calculator" aria-hidden="true"></i>
-                        <h3>Want to Know Your Home's Value?</h3>
+                        <h2 class="service-card-title">Want to Know Your Home's Value?</h2>
                         <p>Free professional valuation in 24 hours</p>
                     </a>
                 </div>
@@ -728,6 +688,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About Dr. Jan</a></li>
                         <li><a href="/community">Skye Summit Community</a></li>
+                        <li><a href="/homes-for-sale-skye-summit">Homes for Sale in Skye Summit</a></li>
                         <li><a href="/sell">Sell Your Home</a></li>
                         <li><a href="/buy">Buy in Skye Summit</a></li>
                         <li><a href="/valuation">Free Valuation</a></li>
@@ -761,9 +722,9 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Dr. Jan Duffy, REALTOR® S.0197614.LLC. All rights reserved.</p>
                 <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
-                    <a href="#">MLS Disclaimer</a>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Use</a>
+                    <a href="/mls-disclaimer">MLS Disclaimer</a>
                 </div>
             </div>
         </div>
@@ -774,40 +735,72 @@
         <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
-    <script src="script.js"></script>
-    
-    <!-- RealScout Widget Fallback Script -->
+    <!-- RealScout: single load when listings section is near viewport -->
     <script>
-      // Ensure RealScout widget loads properly
+    (function() {
+      function loadRealScout() {
+        if (window.__realScoutLoaded) return;
+        window.__realScoutLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://em.realscout.com/widgets/realscout-web-components.umd.js';
+        s.type = 'module';
+        document.head.appendChild(s);
+      }
+      function init() {
+        var el = document.getElementById('listings');
+        if (!el) {
+          loadRealScout();
+          return;
+        }
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                loadRealScout();
+                io.disconnect();
+              }
+            });
+          }, { rootMargin: '300px 0px', threshold: 0.01 });
+          io.observe(el);
+          setTimeout(function() {
+            if (!window.__realScoutLoaded) loadRealScout();
+          }, 6000);
+        } else {
+          window.addEventListener('load', loadRealScout);
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+    </script>
+    <script src="script.js" defer></script>
+    <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const widget = document.querySelector('realscout-office-listings');
-        
-        if (widget) {
-          // Add loading state
-          widget.style.opacity = '0';
-          widget.style.transition = 'opacity 0.5s ease-in-out';
-          
-          // Check if widget is defined
+        var widget = document.querySelector('realscout-office-listings');
+        if (!widget) return;
+        widget.style.opacity = '0';
+        widget.style.transition = 'opacity 0.5s ease-in-out';
+        function tryShow() {
           if (customElements.get('realscout-office-listings')) {
             widget.style.opacity = '1';
-          } else {
-            // Fallback if widget doesn't load
-            setTimeout(() => {
-              if (!customElements.get('realscout-office-listings')) {
-                const container = widget.parentElement;
-                container.innerHTML = `
-                  <div style="text-align: center; padding: 3rem; background: #f7f9fc; border-radius: 8px; border: 2px dashed #3A8DDE;">
-                    <h3 style="color: #0A2540; margin-bottom: 1rem;">Skye Summit Listings</h3>
-                    <p style="color: #666; margin-bottom: 2rem;">View current listings in Skye Summit</p>
-                    <a href="#contact" class="btn btn-primary" style="text-decoration: none; padding: 12px 24px; background: #3A8DDE; color: white; border-radius: 6px; font-weight: 600;">
-                      Contact Dr. Jan Duffy for Listings
-                    </a>
-                  </div>
-                `;
-              }
-            }, 5000); // 5 second timeout
+            return true;
           }
+          return false;
         }
+        if (tryShow()) return;
+        var attempts = 0;
+        var t = setInterval(function() {
+          attempts += 1;
+          if (tryShow() || attempts > 100) clearInterval(t);
+        }, 100);
+        setTimeout(function() {
+          if (!customElements.get('realscout-office-listings') && widget.parentElement) {
+            widget.parentElement.innerHTML = '<div style="text-align:center;padding:3rem;background:#f7f9fc;border-radius:8px;border:2px dashed #3A8DDE"><h3 style="color:#0A2540;margin-bottom:1rem">Skye Summit Listings</h3><p style="color:#4a4a4a;margin-bottom:2rem">View current listings in Skye Summit</p><a href="/contact" class="btn btn-primary" style="text-decoration:none;padding:12px 24px;background:#3A8DDE;color:white;border-radius:6px;font-weight:600">Contact Dr. Jan Duffy for Listings</a></div>';
+          }
+        }, 8000);
       });
     </script>
 </body>

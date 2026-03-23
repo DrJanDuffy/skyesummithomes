@@ -1,58 +1,17 @@
 User-agent: *
 Allow: /
 
+Crawl-delay: 1
+
 # Sitemap location
 Sitemap: https://www.skyesummithomes.com/sitemap.xml
 
-# Crawl delay (optional - helps with server load)
-Crawl-delay: 1
+# Site uses flat HTML at root; only list paths that exist as pages or assets.
+Allow: /styles.css
+Allow: /script.js
+Allow: /sw.js
 
-# Allow all important directories
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /blog/
-Allow: /skye-summit/
-
-# Disallow admin or private areas (if any)
+# Disallow non-existent admin areas (if added later, tighten as needed)
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
-
-# Allow RealScout widget content
-Allow: /realscout/
-Allow: /widgets/
-
-# Allow contact forms and consultation pages
-Allow: /contact/
-Allow: /consultation/
-Allow: /free-consultation/
-
-# Allow market analysis and reports
-Allow: /market-analysis/
-Allow: /market-reports/
-Allow: /reports/
-
-# Allow service pages
-Allow: /buyer-services/
-Allow: /seller-services/
-Allow: /services/
-
-# Allow area-specific pages
-Allow: /las-vegas/
-Allow: /centennial-hills/
-Allow: /northwest-las-vegas/
-Allow: /skye-summit/
-
-# Allow resource pages
-Allow: /resources/
-Allow: /mortgage-calculator/
-Allow: /home-buying-guide/
-Allow: /guides/
-
-# Allow about and credential pages
-Allow: /about/
-Allow: /credentials/
-Allow: /dr-jan-duffy/
-
-# Last updated: 2025-01-20 
