@@ -68,10 +68,10 @@ Follow these steps to complete the website setup and go live.
 
 ### Photos
 1. **Headshot Photo**:
-   - Add `dr-jan-duffy.jpg` to project root or `/images/` folder
+   - Add `dr-jan-duffy.jpg` under `/images/agents/` (canonical agent headshot URL)
    - Update `about.html` line ~81:
    ```html
-   <img src="/images/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover;">
+   <img src="/images/agents/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover;">
    ```
 
 2. **Community Photos**:

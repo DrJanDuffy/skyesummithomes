@@ -23,18 +23,8 @@ Replace the placeholder div with:
 
 ---
 
-### Add Real Photo to About Page
-**File**: `about.html` (line ~81)
-
-Replace:
-```html
-<div class="headshot-placeholder">
-```
-
-With:
-```html
-<img src="/images/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover;">
-```
+### Agent headshot (About + Home)
+**Files**: `about.html`, `index.html` — use `<img class="agent-headshot agent-headshot--about">` / `agent-headshot--advisor">` with `src="/images/agents/dr-jan-duffy.jpg"`. Additional team photos live in `/images/agents/`.
 
 ---
 
