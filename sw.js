@@ -1,7 +1,7 @@
 // Service Worker for Skye Summit Real Estate Website
-// Version 1.0.0
-const CACHE_NAME = 'skye-summit-v1';
-const RUNTIME_CACHE = 'skye-summit-runtime-v1';
+// Bump CACHE_* when shipping HTML/CSS changes users must see immediately.
+const CACHE_NAME = 'skye-summit-v3';
+const RUNTIME_CACHE = 'skye-summit-runtime-v3';
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -45,52 +45,59 @@ self.addEventListener('activate', (event) => {
     return self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event — HTML: network-first (avoid stale homepage); other assets: cache-first
 self.addEventListener('fetch', (event) => {
-    // Skip non-GET requests
     if (event.request.method !== 'GET') {
         return;
     }
-    
-    // Skip cross-origin requests
     if (!event.request.url.startsWith(self.location.origin)) {
         return;
     }
-    
+
+    const isNavigation =
+        event.request.mode === 'navigate' || event.request.destination === 'document';
+
+    if (isNavigation) {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    if (response && response.status === 200 && response.type === 'basic') {
+                        const copy = response.clone();
+                        caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy));
+                    }
+                    return response;
+                })
+                .catch(() =>
+                    caches
+                        .match(event.request)
+                        .then((cached) => cached || caches.match('/index.html'))
+                )
+        );
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
-            .then((cachedResponse) => {
-                // Return cached version if available
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
-                
-                // Otherwise fetch from network
-                return fetch(event.request)
-                    .then((response) => {
-                        // Don't cache non-successful responses
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-                        
-                        // Clone the response
-                        const responseToCache = response.clone();
-                        
-                        // Cache the response for future use
-                        caches.open(RUNTIME_CACHE)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
-                            });
-                        
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(event.request)
+                .then((response) => {
+                    if (!response || response.status !== 200 || response.type !== 'basic') {
                         return response;
-                    })
-                    .catch(() => {
-                        // Return offline fallback if available
-                        if (event.request.destination === 'document') {
-                            return caches.match('/index.html');
-                        }
+                    }
+                    const responseToCache = response.clone();
+                    caches.open(RUNTIME_CACHE).then((cache) => {
+                        cache.put(event.request, responseToCache);
                     });
-            })
+                    return response;
+                })
+                .catch(() => {
+                    if (event.request.destination === 'document') {
+                        return caches.match('/index.html');
+                    }
+                });
+        })
     );
 });
 
