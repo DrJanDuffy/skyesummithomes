@@ -119,43 +119,150 @@
         .zip-map-breadcrumb-inner span { margin: 0 6px; }
 
         .zip-map-hero {
-            background: linear-gradient(135deg, var(--zip-dark) 0%, #1a3a5c 100%);
-            color: white;
-            padding: 56px 24px 40px;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
             text-align: center;
+            padding: clamp(2.5rem, 5vw, 3.75rem) 24px clamp(2.75rem, 6vw, 4rem);
+            background:
+                radial-gradient(ellipse 120% 80% at 50% -20%, rgba(58, 141, 222, 0.35) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 60% at 100% 50%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 50% at 0% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 45%),
+                linear-gradient(160deg, #050f1c 0%, var(--zip-dark) 38%, #152a45 100%);
+        }
+        .zip-map-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M48 0v48H0V0h48zM0 24h48M24 0v48'/%3E%3C/svg%3E");
+            opacity: 0.9;
+            pointer-events: none;
+        }
+        .zip-map-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .zip-map-hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 1rem;
+        }
+        .zip-map-hero-kicker .fa-map-marked-alt {
+            color: #7dd3fc;
+            font-size: 1rem;
         }
         .zip-map-hero h1 {
-            font-size: clamp(28px, 4vw, 42px);
+            font-size: clamp(1.85rem, 4.5vw, 2.75rem);
             font-weight: 800;
-            margin-bottom: 12px;
-            line-height: 1.15;
+            margin: 0 0 0.75rem;
+            line-height: 1.12;
             color: #fff;
+            letter-spacing: -0.02em;
         }
-        .zip-map-hero p {
-            font-size: 17px;
-            opacity: 0.85;
-            max-width: 680px;
-            margin: 0 auto 28px;
-            line-height: 1.5;
-            color: #fff;
+        .zip-map-hero-lead {
+            font-size: clamp(1rem, 2.2vw, 1.125rem);
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 40rem;
+            margin: 0 auto 1.75rem;
         }
         .zip-map-hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 640px;
+            margin: 0 auto 1.75rem;
         }
-        .zip-map-hero-stat { text-align: center; }
+        .zip-map-hero-stat {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            padding: 1rem 0.75rem;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .zip-map-hero-stat:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(125, 211, 252, 0.35);
+        }
+        .zip-map-hero-stat .zip-map-hero-stat-icon {
+            color: #7dd3fc;
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+            opacity: 0.95;
+        }
         .zip-map-hero-stat .num {
-            font-size: 32px;
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
             font-weight: 800;
-            color: #60b4f7;
+            font-variant-numeric: tabular-nums;
+            color: #e0f2fe;
+            line-height: 1.2;
         }
         .zip-map-hero-stat .label {
-            font-size: 13px;
-            opacity: 0.7;
+            font-size: 0.6875rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.62);
+            margin-top: 0.25rem;
+        }
+        .zip-map-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .zip-map-hero-actions a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.65rem 1.15rem;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+        }
+        .zip-map-hero-actions a:focus-visible {
+            outline: 2px solid #7dd3fc;
+            outline-offset: 2px;
+        }
+        .zip-map-hero-btn-primary {
+            background: var(--zip-primary);
+            color: #fff;
+            border: 2px solid transparent;
+        }
+        .zip-map-hero-btn-primary:hover {
+            background: var(--zip-primary-dark);
+            transform: translateY(-1px);
+        }
+        .zip-map-hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.28);
+        }
+        .zip-map-hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+        .zip-map-hero-btn-ghost {
+            background: transparent;
+            color: #e0f2fe;
+            border: 2px solid transparent;
+        }
+        .zip-map-hero-btn-ghost:hover {
+            color: #fff;
+            text-decoration: underline;
         }
 
         .zip-map-search-section {
@@ -488,8 +595,15 @@
             .zip-map-filter-btn { width: 100%; text-align: center; }
             #map, .map-placeholder { height: 380px; }
             .zip-map-zip-grid { grid-template-columns: 1fr; }
-            .zip-map-hero { padding: 40px 20px 32px; }
-            .zip-map-hero-stats { gap: 24px; }
+            .zip-map-hero { padding: 2.25rem 20px 2.5rem; }
+            .zip-map-hero-stats {
+                grid-template-columns: 1fr;
+                max-width: 16rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .zip-map-hero-actions { flex-direction: column; }
+            .zip-map-hero-actions a { width: 100%; max-width: 20rem; }
             .zip-map-legend { display: none; }
         }
     </style>
@@ -532,20 +646,34 @@
 
     <main id="main-content" role="main">
         <section class="zip-map-hero" aria-labelledby="page-title">
-            <h1 id="page-title">Las Vegas Valley Zip Code Map</h1>
-            <p>Search every neighborhood across the Las Vegas Valley by zip code. Explore communities in Las Vegas, Henderson, North Las Vegas, Summerlin, Boulder City, and beyond.</p>
-            <div class="zip-map-hero-stats">
-                <div class="zip-map-hero-stat">
-                    <div class="num">65+</div>
-                    <div class="label">Zip Codes</div>
+            <div class="zip-map-hero-inner">
+                <p class="zip-map-hero-kicker">
+                    <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                    Clark County, Nevada · Las Vegas Valley
+                </p>
+                <h1 id="page-title">Las Vegas Zip Code Map</h1>
+                <p class="zip-map-hero-lead">Explore neighborhoods by zip code—interactive map, searchable directory, and quick links to search options or talk with Dr. Jan Duffy. Covers Las Vegas, Henderson, North Las Vegas, Summerlin, Boulder City, and the southwest corridor.</p>
+                <div class="zip-map-hero-stats" role="list">
+                    <div class="zip-map-hero-stat" role="listitem">
+                        <div class="zip-map-hero-stat-icon" aria-hidden="true"><i class="fas fa-th-large"></i></div>
+                        <div class="num">65+</div>
+                        <div class="label">Zip codes listed</div>
+                    </div>
+                    <div class="zip-map-hero-stat" role="listitem">
+                        <div class="zip-map-hero-stat-icon" aria-hidden="true"><i class="fas fa-city"></i></div>
+                        <div class="num">6</div>
+                        <div class="label">Cities &amp; areas</div>
+                    </div>
+                    <div class="zip-map-hero-stat" role="listitem">
+                        <div class="zip-map-hero-stat-icon" aria-hidden="true"><i class="fas fa-award"></i></div>
+                        <div class="num">15+</div>
+                        <div class="label">Years local experience</div>
+                    </div>
                 </div>
-                <div class="zip-map-hero-stat">
-                    <div class="num">6</div>
-                    <div class="label">Cities &amp; Areas</div>
-                </div>
-                <div class="zip-map-hero-stat">
-                    <div class="num">15+</div>
-                    <div class="label">Years Experience</div>
+                <div class="zip-map-hero-actions">
+                    <a href="#zip-directory" class="zip-map-hero-btn-primary">Explore the directory</a>
+                    <a href="/search/" class="zip-map-hero-btn-secondary">Search hub</a>
+                    <a href="tel:+17029308222" class="zip-map-hero-btn-ghost"><i class="fas fa-phone-alt" aria-hidden="true"></i> (702) 930-8222</a>
                 </div>
             </div>
         </section>
@@ -573,7 +701,7 @@
             </div>
         </section>
 
-        <section class="zip-map-directory-section" aria-labelledby="directory-heading">
+        <section class="zip-map-directory-section" id="zip-directory" aria-labelledby="directory-heading">
             <div class="zip-map-directory-header">
                 <h2 id="directory-heading">Complete Zip Code Directory</h2>
                 <span class="zip-map-directory-count" id="resultCount">Showing all zip codes</span>
