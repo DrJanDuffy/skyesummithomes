@@ -1156,6 +1156,24 @@ realscout-office-listings {
     opacity: 0.95;
 }
 
+.service-hero .hero-cta-primary {
+    margin-top: 0.25rem;
+}
+
+.service-hero .hero-cta-primary .hero-phone {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.service-hero .hero-cta-primary .hero-phone a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.service-hero .hero-cta-primary .hero-phone a:hover {
+    color: #e3f2fd;
+}
+
 .why-section, .process-section, .value-section, .examples-section {
     padding: 80px 0;
 }
