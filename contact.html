@@ -31,6 +31,18 @@
     <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .zip-context-banner {
+            background: #eef6ff;
+            border: 1px solid #bfdbfe;
+            color: #0A2540;
+            padding: 0.85rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            max-width: 720px;
+        }
+        .zip-context-banner a { color: #2563eb; font-weight: 600; }
+    </style>
     
     <!-- ContactPoint Schema -->
     <script type="application/ld+json">
@@ -87,6 +99,11 @@
         <!-- Hero Section -->
         <section class="service-hero">
             <div class="container">
+                <div id="zip-context-banner" class="zip-context-banner" hidden role="status">
+                    You&rsquo;re asking about zip code <strong id="zip-context-code"></strong>.
+                    <a href="/search/">Search hub</a> ·
+                    <a href="/las-vegas-zip-code-map/">Zip map</a>
+                </div>
                 <h1>Let's Talk About Your Skye Summit Real Estate Goals</h1>
                 <p class="hero-subtitle">Schedule your free 15-minute consultation or reach out directly. I respond within 2 hours during business hours.</p>
                 <div class="hero-cta hero-cta-primary">
@@ -308,6 +325,23 @@
     </button>
 
     <script src="script.js"></script>
+    <script>
+        (function () {
+            var params = new URLSearchParams(window.location.search);
+            var zip = params.get('zip');
+            if (!zip || !/^\d{5}$/.test(zip)) return;
+            var banner = document.getElementById('zip-context-banner');
+            var codeEl = document.getElementById('zip-context-code');
+            var msg = document.getElementById('consult-message');
+            if (codeEl) codeEl.textContent = zip;
+            if (banner) banner.hidden = false;
+            if (msg) {
+                var hint = 'Interested in homes and market context near zip ' + zip + '.\n\n';
+                if (!msg.value.trim()) msg.value = hint;
+                else if (msg.value.indexOf(zip) === -1) msg.value = hint + msg.value;
+            }
+        })();
+    </script>
     <script>
         // Form submission handler with Follow Up Boss integration
         document.getElementById('consultation-form').addEventListener('submit', async function(e) {

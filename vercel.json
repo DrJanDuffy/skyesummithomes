@@ -107,6 +107,14 @@
     {
       "source": "/404",
       "destination": "/404.html"
+    },
+    {
+      "source": "/search",
+      "destination": "/search/index.html"
+    },
+    {
+      "source": "/las-vegas-zip-code-map",
+      "destination": "/las-vegas-zip-code-map/index.html"
     }
   ],
   "headers": [
