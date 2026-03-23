@@ -232,7 +232,7 @@
   window.resetFilters = function () {
     searchInput.value = '';
     activeRegion = 'all';
-    document.querySelectorAll('.region-tab').forEach(function (t) {
+    document.querySelectorAll('.zip-map-region-tab').forEach(function (t) {
       t.classList.remove('active');
     });
     var allTab = document.querySelector('[data-region="all"]');
@@ -240,9 +240,9 @@
     renderCards(zipData);
   };
 
-  document.querySelectorAll('.region-tab').forEach(function (tab) {
+  document.querySelectorAll('.zip-map-region-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
-      document.querySelectorAll('.region-tab').forEach(function (t) {
+      document.querySelectorAll('.zip-map-region-tab').forEach(function (t) {
         t.classList.remove('active');
       });
       tab.classList.add('active');

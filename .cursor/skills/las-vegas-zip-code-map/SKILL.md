@@ -27,11 +27,13 @@ Reference implementation in this repo: `las-vegas-zip-code-map/index.html` + `la
 
 ```
 las-vegas-zip-code-map/
-  index.html          # Page shell, inline CSS, meta + JSON-LD, <meta name="google-maps-api-key">
-  zip-map.js          # zipData[], zipCoords{}, filters, renderCards, initMap, Maps loader
+  index.html          # Uses site /styles.css + /script.js, shared header/footer; scoped inline CSS (--zip-* vars); <meta name="google-maps-api-key">
+  zip-map.js          # zipData[], zipCoords{}, filters, renderCards, initMap, Maps loader (targets .zip-map-region-tab, #zipGrid, etc.)
 search/
   index.html          # Hub: reads ?zip=, CTAs to listings / buy / contact?zip= / map
 ```
+
+**Global chrome:** Prefer the same header/nav, footer, skip-link, back-to-top, and Font Awesome as other marketing pages. **Scope** map-specific classes (e.g. `.zip-map-hero`, `.zip-map-page-cta`) so they do not collide with global `.hero` (100vh) or `.cta-section` in `styles.css`.
 
 ## SEO and page structure
 
