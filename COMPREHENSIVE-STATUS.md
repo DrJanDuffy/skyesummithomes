@@ -5,7 +5,7 @@
 **Last Updated**: January 2025  
 **Deployment**: ✅ Live on Vercel  
 **Domain**: https://www.skyesummithomes.com  
-**GitHub**: https://github.com/DrJanDuffy/skyesummithomes
+**GitHub**: https://github.com/LetMeHelpYouREALTY/skyesummithomes
 
 ---
 
@@ -254,7 +254,7 @@
 ## 📞 SUPPORT & RESOURCES
 
 **Live Site**: https://www.skyesummithomes.com  
-**GitHub**: https://github.com/DrJanDuffy/skyesummithomes  
+**GitHub**: https://github.com/LetMeHelpYouREALTY/skyesummithomes  
 **Vercel Dashboard**: https://vercel.com/dashboard
 
 **Quick Help**:

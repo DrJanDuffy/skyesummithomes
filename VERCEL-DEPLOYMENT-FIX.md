@@ -1,5 +1,7 @@
 # Vercel Deployment Not Working - Troubleshooting Guide
 
+> **Repository:** Connect Vercel to **`LetMeHelpYouREALTY/skyesummithomes`** (not `DrJanDuffy/skyesummithomes`). See [VERCEL-AUTO-DEPLOY.md](./VERCEL-AUTO-DEPLOY.md) for the push/deploy mismatch.
+
 ## ✅ FIXED: Configuration Error
 
 **Issue**: `vercel.json` had both `routes` and `redirects`, which Vercel doesn't allow.
@@ -20,12 +22,12 @@
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click on your project (skyesummithomes)
 3. Go to **Settings** → **Git**
-4. Verify the repository is connected: `DrJanDuffy/skyesummithomes`
+4. Verify the repository is connected: `LetMeHelpYouREALTY/skyesummithomes`
 5. If not connected:
    - Click "Connect Git Repository"
    - Select GitHub
    - Authorize Vercel
-   - Select `DrJanDuffy/skyesummithomes`
+   - Select `LetMeHelpYouREALTY/skyesummithomes`
    - Click "Import"
 
 ### Issue 2: Webhook Not Configured
@@ -89,7 +91,7 @@ vercel --prod
 
 ### Step 1: Verify Repository Connection
 1. Vercel Dashboard → Project → Settings → Git
-2. Confirm repository: `DrJanDuffy/skyesummithomes`
+2. Confirm repository: `LetMeHelpYouREALTY/skyesummithomes`
 3. Confirm branch: `main`
 
 ### Step 2: Test Manual Deployment

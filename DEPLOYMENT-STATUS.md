@@ -66,7 +66,7 @@
 
 2. **Verify Vercel Project Settings**:
    - Vercel Dashboard → Project → Settings → Git
-   - Confirm repository: `DrJanDuffy/skyesummithomes`
+   - Confirm repository: `LetMeHelpYouREALTY/skyesummithomes`
    - Confirm branch: `main`
    - Production Branch: `main`
 

@@ -113,7 +113,7 @@ skyesummithomes/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/DrJanDuffy/skyesummithomes.git
+   git clone git@github.com:LetMeHelpYouREALTY/skyesummithomes.git
    cd skyesummithomes
    ```
 

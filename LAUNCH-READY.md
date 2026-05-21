@@ -155,7 +155,7 @@ Set up Follow Up Boss webhook and update form action URLs.
 - Google Business Profile: https://share.google/yoVmGzrpTUtHrvsnL
 
 **Technical**:
-- GitHub: https://github.com/DrJanDuffy/skyesummithomes
+- GitHub: https://github.com/LetMeHelpYouREALTY/skyesummithomes
 - Vercel Dashboard: https://vercel.com/dashboard
 - Production URL: https://skyesummithomes.com
 

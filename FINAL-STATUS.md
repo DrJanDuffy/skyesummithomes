@@ -168,7 +168,7 @@
 ## 📞 Quick Reference
 
 **Live Site**: https://skyesummithomes.com  
-**GitHub**: https://github.com/DrJanDuffy/skyesummithomes  
+**GitHub**: https://github.com/LetMeHelpYouREALTY/skyesummithomes  
 **Vercel Dashboard**: https://vercel.com/dashboard
 
 **Documentation**:

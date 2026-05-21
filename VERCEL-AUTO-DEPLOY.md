@@ -1,5 +1,8 @@
 # Why `git push` Did Not Update Production
 
+**Canonical Git remote:** `git@github.com:LetMeHelpYouREALTY/skyesummithomes.git`  
+All deployment docs in this repo now reference **LetMeHelpYouREALTY/skyesummithomes**. If Vercel still shows **DrJanDuffy/skyesummithomes**, reconnect Git (below).
+
 ## Root cause (most common)
 
 **Vercel production deploys the `main` branch**, not feature branches like `cursor/seo-geo-aeo-pages-6031`.
