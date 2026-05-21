@@ -16,8 +16,10 @@ These URLs returned **404** (or were not served) when crawled on the **non-www**
 ## Root cause
 
 - **Correct site** lives on **https://www.skyesummithomes.com** (Vercel).
-- **https://skyesummithomes.com** (apex, no `www`) still resolves to an **old IP** (`216.198.79.1`) and serves a **generic Las Vegas landing page**, not Skye Summit pages. Google crawled apex URLs and did not get your real `/about`, `/buy`, etc. content.
-- `vercel.json` already has non-www → www **301** redirects, but they only run when traffic reaches **Vercel**. Apex traffic never hits Vercel until DNS is fixed.
+- **https://skyesummithomes.com** (apex, no `www`) is handled by Cloudflare Workers **before** Vercel:
+  - `kelly-landing` returns **404** for unknown hosts (including apex `/invest`, `/buy`, etc.).
+  - `palms-place-listing-injector` may serve a **generic Las Vegas landing page** when the origin errors.
+- `vercel.json` already has non-www → www **301** redirects, but they only run when traffic reaches **Vercel**. Apex must **301 to www at Cloudflare** first.
 
 ## Code changes in this repo
 
