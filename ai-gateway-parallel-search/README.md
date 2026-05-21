@@ -23,7 +23,7 @@ AI_GATEWAY_API_KEY=...   # Language model via AI Gateway
 PARALLEL_API_KEY=...     # Only for @parallel-web/ai-sdk-tools scripts
 ```
 
-> `npm install` uses `--legacy-peer-deps` if needed: `@parallel-web/ai-sdk-tools` currently peers on AI SDK v5; it works with AI SDK v6 in this repo.
+> `@parallel-web/ai-sdk-tools` lists a peer on AI SDK v5; it runs with AI SDK v6 here (see `.npmrc`).
 
 ---
 
