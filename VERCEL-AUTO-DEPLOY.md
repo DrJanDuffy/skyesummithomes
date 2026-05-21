@@ -49,7 +49,7 @@ Vercel **Project Settings** may still show **Next.js**, which makes remote `verc
 
 This repo sets **`"framework": null`** in `vercel.json` (static / Other). The GitHub workflow uses **`vercel build` + `deploy --prebuilt`** so that config is used instead of the dashboard preset.
 
-**Optional dashboard fix:** Vercel → skyesummithomes → Settings → General → Framework Preset → **Other**.
+**Dashboard fix (recommended):** Match Project Settings to production — see **[VERCEL-DASHBOARD-SETTINGS.md](./VERCEL-DASHBOARD-SETTINGS.md)** (Framework **Other**, `npm run build`, output `.`, `npm ci`).
 
 ## Fourth check: `vercel.json`
 
