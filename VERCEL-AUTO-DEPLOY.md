@@ -11,11 +11,27 @@
 
 Your SEO/GBP work was on `cursor/seo-geo-aeo-pages-6031`. Until that is merged into `main`, production stays on the last `main` deploy (live site `last-modified` was still April 2026).
 
-## Second check: Git repository link
+## Second check: Git repository link (likely your issue)
 
-Remote: `LetMeHelpYouREALTY/skyesummithomes`
+| Where you push | Where Vercel listens (today) |
+|----------------|------------------------------|
+| `LetMeHelpYouREALTY/skyesummithomes` | **`DrJanDuffy/skyesummithomes`** |
 
-In **Vercel → Project → Settings → Git**, the connected repo must be this exact GitHub repo. If it still points to `DrJanDuffy/skyesummithomes`, webhooks will not fire on new pushes.
+Cloud agent pushes go to **LetMeHelpYouREALTY**. The Vercel project `skyesummithomes` is still wired to **DrJanDuffy/skyesummithomes**, so those pushes **do not start a deployment**.
+
+**Fix (pick one):**
+
+1. **Reconnect Vercel (recommended)**  
+   Vercel → [skyesummithomes](https://vercel.com/janet-duffys-projects/skyesummithomes) → Settings → Git → disconnect → connect **`LetMeHelpYouREALTY/skyesummithomes`** → Production branch **`main`**.
+
+2. **Push to the repo Vercel already uses**  
+   Merge your work into `DrJanDuffy/skyesummithomes` `main` (mirror, PR, or change `origin` if you own that repo).
+
+After reconnecting, push `main` again:
+
+```bash
+git push origin main
+```
 
 ## Third check: `vercel.json`
 
