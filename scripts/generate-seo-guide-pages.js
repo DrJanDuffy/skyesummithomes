@@ -14,6 +14,65 @@ const GSC_TOKEN = 'wKOftY7ctL98xgE1EW2r-2pYqOXyN109r4ZLLiRwQsI';
 
 const GUIDES = [
   {
+    slug: 'skye-summit-realtor',
+    title: 'Skye Summit REALTOR® | Dr. Jan Duffy | Buyer & Seller Concierge',
+    description:
+      'Dr. Jan Duffy is the Skye Summit concierge REALTOR® for homebuyers and homesellers. Local buyer representation, seller marketing, new construction, and Berkshire Hathaway HomeServices Nevada Properties. (702) 930-8222.',
+    h1: 'Skye Summit REALTOR®: Dr. Jan Duffy',
+    heroSubtitle:
+      'Concierge real estate for Skye Summit communities—one trusted advisor for your entire buy or sell journey in northwest Las Vegas.',
+    breadcrumbName: 'Skye Summit REALTOR®',
+    faqs: [
+      {
+        q: 'Who is the Skye Summit concierge REALTOR®?',
+        a: 'Dr. Jan Duffy, REALTOR® (License S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties, focuses on Skye Summit and northwest Las Vegas for both buyers and sellers.',
+      },
+      {
+        q: 'What does buyer concierge include in Skye Summit?',
+        a: 'Listing alerts, private showings, comparable market analysis, offer strategy, inspection coordination, and builder contract review for new construction.',
+      },
+      {
+        q: 'What does seller concierge include?',
+        a: 'Professional valuation, staging guidance, marketing plan, offer review, and negotiation through closing—priced for Skye Summit phase, view, and lot premiums.',
+      },
+      {
+        q: 'Does Dr. Jan Duffy work with new construction in Skye Summit?',
+        a: 'Yes. Buyer representation on builder contracts, design center upgrades, and timeline management. See <a href="/new-construction-skye-summit">new construction guide</a>.',
+      },
+      {
+        q: 'How do I contact Dr. Jan Duffy?',
+        a: 'Call <a href="tel:+17029308222">(702) 930-8222</a>, email DrJanSells@SkyeSummitHomes.com, or <a href="/contact">schedule a consultation</a>. Office: 11411 Southern Highlands Pkwy #300, Las Vegas, NV 89141.',
+      },
+    ],
+    extraSections: `
+        <section class="why-section">
+            <div class="container">
+                <h2>Concierge services for Skye Summit</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-user-check"></i>
+                        <h3>Single point of contact</h3>
+                        <p>One advisor from first call through closing—no handoffs between departments.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Hyperlocal expertise</h3>
+                        <p>Skye Summit phases, elevation, HOA nuances, and Centennial Hills market context.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Buyer &amp; seller</h3>
+                        <p>Representation whether you are moving in, moving up, or selling in Skye Summit.</p>
+                    </div>
+                </div>
+                <p style="text-align:center;margin-top:1.5rem;">
+                    <a href="/buy" class="btn btn-primary">Buyer concierge</a>
+                    <a href="/sell" class="btn btn-secondary">Seller concierge</a>
+                </p>
+            </div>
+        </section>`,
+  },
+  {
     slug: 'skye-summit-faq',
     title: 'Skye Summit FAQ | Homes, HOA, Schools & Buying | Dr. Jan Duffy',
     description:
@@ -496,6 +555,7 @@ ${guide.extraSections}
                 </div>
                 <p class="cta-note">Dr. Jan Duffy, REALTOR® · License S.0197614.LLC · Berkshire Hathaway HomeServices Nevada Properties</p>
                 <p class="cta-note" style="margin-top:0.75rem;">
+                    <a href="/skye-summit-realtor">REALTOR® profile</a> ·
                     <a href="/skye-summit-faq">FAQ</a> ·
                     <a href="/skye-summit-schools">Schools</a> ·
                     <a href="/living-in-skye-summit">Living here</a> ·
@@ -522,6 +582,7 @@ ${guide.extraSections}
                 <div class="footer-section">
                     <h4>Guides</h4>
                     <ul>
+                        <li><a href="/skye-summit-realtor">Skye Summit REALTOR®</a></li>
                         <li><a href="/skye-summit-faq">Skye Summit FAQ</a></li>
                         <li><a href="/skye-summit-schools">Schools</a></li>
                         <li><a href="/living-in-skye-summit">Living in Skye Summit</a></li>

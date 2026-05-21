@@ -2764,6 +2764,120 @@ realscout-office-listings {
     min-height: 260px;
 }
 
+/* Hyperlocal GBP block (all marketing pages) */
+.hyperlocal-gbp-section {
+    padding: 3rem 0;
+    background: linear-gradient(180deg, #f0f6fc 0%, #fff 100%);
+    border-top: 1px solid #dbeafe;
+}
+
+.hyperlocal-gbp-section--compact {
+    padding: 2rem 0;
+}
+
+.hyperlocal-kicker {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3A8DDE;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.hyperlocal-lead {
+    font-size: 1.05rem;
+    color: #334155;
+    max-width: 52rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.hyperlocal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.hyperlocal-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(10, 37, 64, 0.06);
+}
+
+.hyperlocal-card h3 {
+    font-size: 1.05rem;
+    color: #0A2540;
+    margin-bottom: 0.75rem;
+}
+
+.hyperlocal-card ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    color: #475569;
+    line-height: 1.55;
+}
+
+.hyperlocal-nap p {
+    margin: 0.35rem 0;
+    line-height: 1.5;
+}
+
+.hyperlocal-license {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+}
+
+.gbp-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.hyperlocal-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .hyperlocal-bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hyperlocal-hours ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem;
+}
+
+.hyperlocal-hours li {
+    padding: 0.25rem 0;
+    color: #334155;
+}
+
+.hyperlocal-rating {
+    font-size: 0.95rem;
+    color: #0A2540;
+}
+
+.hyperlocal-areas {
+    font-size: 0.9rem;
+    color: #475569;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.hyperlocal-areas a {
+    font-weight: 600;
+}
+
 /* RealScout widget (homepage listings) */
 realscout-office-listings {
     --rs-listing-divider-color: rgb(101, 141, 172);

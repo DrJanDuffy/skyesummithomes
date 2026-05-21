@@ -125,6 +125,10 @@
       "destination": "/las-vegas-zip-code-map/index.html"
     },
     {
+      "source": "/skye-summit-realtor",
+      "destination": "/skye-summit-realtor.html"
+    },
+    {
       "source": "/skye-summit-faq",
       "destination": "/skye-summit-faq.html"
     },

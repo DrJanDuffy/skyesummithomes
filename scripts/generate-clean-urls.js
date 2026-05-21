@@ -25,6 +25,7 @@ const SLUGS = [
   'terms',
   'mls-disclaimer',
   'homes-for-sale-skye-summit',
+  'skye-summit-realtor',
   'skye-summit-faq',
   'skye-summit-schools',
   'living-in-skye-summit',
