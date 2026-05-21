@@ -1,59 +1,30 @@
-Skye Summit Las Vegas Real Estate Specialist! 🏠✨
+# Google Business Profile — canonical copy (matches GBP dashboard)
 
-Dr. Jan Duffy, REALTOR® with 30+ years of experience, is your dedicated Skye Summit expert. Specializing in the newest elevated community in northwest Las Vegas at 3,200 feet elevation.
+**Business name:** Skye Summit | Homes by Dr. Jan Duffy  
+**Category:** Real estate agent  
+**Website:** https://www.skyesummithomes.com/  
+**Phone:** (702) 930-8222  
+**SMS:** sms:+17029308222  
+**Opening date:** September 20, 2009  
 
-Why choose Dr. Jan Duffy for Skye Summit?
-• Skye Summit New Construction Specialist
-• 30+ Years Real Estate Experience
-• 500+ Homes Successfully Sold
-• 98% Client Satisfaction Rate
-• Berkshire Hathaway HomeServices Nevada Properties
+## Description (use on GBP — under 750 characters)
 
-Skye Summit offers:
-• Breathtaking mountain views
-• Elevated living at 3,200 feet
-• New construction homes
-• Modern amenities
-• Family-friendly community
-• Investment potential
+Dr. Jan Duffy, licensed Nevada Realtor since 2009, specializes in northwest Las Vegas luxury real estate. Expert in Skye Summit homes, Summerlin properties, and Henderson communities. Comprehensive services include buyer representation, luxury home marketing, investment property consultation, and relocation assistance. Known for market expertise, skilled negotiation, and personalized client service. Free property valuations and market analysis available. Schedule your consultation today to discover why clients choose Dr. Duffy for their real estate needs.
 
-From first-time buyers to luxury investors, Dr. Jan Duffy provides expert guidance through every step of your Skye Summit real estate journey. Whether you're buying, selling, or investing in Skye Summit, experience the difference that 30+ years of expertise makes.
+## Hours
 
-Call (702) 930-8222 or email DrJanSells@SkyeSummitHomes.com for your personalized Skye Summit consultation.
+Sunday – Saturday: 9:00 AM – 6:00 PM
 
-Your Skye Summit dream home awaits! 🏔️🏠
+Special closures (per GBP): Easter 2026, Memorial Day 2026, July 4 observed 2026.
 
-#SkyeSummit #LasVegasRealEstate #NewConstruction #ElevatedLiving
+## Social
 
----
+- https://www.linkedin.com/company/skye-summit-homes-by-dr-jan-duffy/
+- https://www.facebook.com/SkyeSummitHomes
 
-## GOOGLE BUSINESS PROFILE DESCRIPTION (750 CHARACTERS MAX)
+## NAP
 
-**Version 1 - Professional & Comprehensive:**
-Dr. Jan Duffy, REALTOR® S.0197614, is your Skye Summit Las Vegas real estate specialist with 30+ years of experience. Specializing in the newest elevated community in northwest Las Vegas at 3,200 feet elevation. Expert guidance for Skye Summit new construction homes, buying, selling, and investment properties. 500+ homes sold, 98% client satisfaction. Berkshire Hathaway HomeServices Nevada Properties. Call (702) 930-8222 or email DrJanSells@SkyeSummitHomes.com for your personalized Skye Summit consultation.
+11411 Southern Highlands Pkwy #300, Las Vegas, NV 89141  
+Service area: Las Vegas, NV 89141, USA
 
-**Version 2 - Benefits-Focused:**
-Skye Summit Las Vegas Real Estate Specialist! Dr. Jan Duffy, REALTOR® S.0197614, with 30+ years experience, helps you find your dream home in Skye Summit's elevated community at 3,200 feet. Specializing in new construction, breathtaking mountain views, and investment properties. 500+ homes sold, 98% satisfaction rate. Expert guidance for buying, selling, and investing in Skye Summit. Berkshire Hathaway HomeServices Nevada Properties. Call (702) 930-8222 today!
-
-**Version 3 - Community-Focused:**
-Discover Skye Summit Las Vegas with Dr. Jan Duffy, REALTOR® S.0197614! The newest elevated community in northwest Las Vegas at 3,200 feet offers breathtaking mountain views, new construction homes, and modern amenities. 30+ years real estate experience, 500+ homes sold, 98% client satisfaction. Your Skye Summit specialist for buying, selling, and investment properties. Berkshire Hathaway HomeServices Nevada Properties. Call (702) 930-8222 for your Skye Summit consultation.
-
-**Version 4 - Action-Oriented:**
-Ready to find your Skye Summit dream home? Dr. Jan Duffy, REALTOR® S.0197614, is your Skye Summit Las Vegas specialist with 30+ years experience. The newest elevated community at 3,200 feet offers new construction homes with breathtaking mountain views. Expert guidance for buying, selling, and investing in Skye Summit. 500+ homes sold, 98% satisfaction. Berkshire Hathaway HomeServices Nevada Properties. Call (702) 930-8222 or email DrJanSells@SkyeSummitHomes.com today!
-
----
-
-## CHARACTER COUNT BREAKDOWN:
-
-Version 1: 748 characters ✅
-Version 2: 749 characters ✅  
-Version 3: 747 characters ✅
-Version 4: 749 characters ✅
-
-All versions are under the 750-character limit and include:
-✅ License number S.0197614
-✅ Skye Summit keyword focus
-✅ Contact information
-✅ Professional credentials
-✅ Service offerings
-✅ Company affiliation 
+Site sync: `lib/gbp-constants.js` + `npm run build` (inject-hyperlocal-gbp).
