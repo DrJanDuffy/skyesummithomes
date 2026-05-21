@@ -7,8 +7,9 @@ package-lock.json
 .env.local
 .env.production
 
-# Vercel
-.vercel
+# Vercel (keep project.json for CI link)
+.vercel/*
+!.vercel/project.json
 
 # IDE
 .vscode/

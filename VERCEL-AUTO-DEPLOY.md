@@ -24,10 +24,15 @@ Cloud agent pushes go to **LetMeHelpYouREALTY**. The Vercel project `skyesummith
 
 **Fix (pick one):**
 
-1. **Reconnect Vercel (recommended)**  
+1. **GitHub Actions deploy (automated in this repo)**  
+   Add secret **`VERCEL_TOKEN`** on **LetMeHelpYouREALTY/skyesummithomes** (Settings → Secrets → Actions).  
+   Pushes to `main` run [`.github/workflows/vercel-production.yml`](./.github/workflows/vercel-production.yml).  
+   See [AUDIT-AND-FIX.md](./AUDIT-AND-FIX.md) for live 404 findings.
+
+2. **Reconnect Vercel Git**  
    Vercel → [skyesummithomes](https://vercel.com/janet-duffys-projects/skyesummithomes) → Settings → Git → disconnect → connect **`LetMeHelpYouREALTY/skyesummithomes`** → Production branch **`main`**.
 
-2. **Push to the repo Vercel already uses**  
+3. **Push to the repo Vercel already uses**  
    Merge your work into `DrJanDuffy/skyesummithomes` `main` (mirror, PR, or change `origin` if you own that repo).
 
 After reconnecting, push `main` again:

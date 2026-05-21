@@ -53,59 +53,59 @@
     },
     {
       "source": "/about",
-      "destination": "/about.html"
+      "destination": "/about/index.html"
     },
     {
       "source": "/community",
-      "destination": "/community.html"
+      "destination": "/community/index.html"
     },
     {
       "source": "/sell",
-      "destination": "/sell.html"
+      "destination": "/sell/index.html"
     },
     {
       "source": "/buy",
-      "destination": "/buy.html"
+      "destination": "/buy/index.html"
     },
     {
       "source": "/valuation",
-      "destination": "/valuation.html"
+      "destination": "/valuation/index.html"
     },
     {
       "source": "/invest",
-      "destination": "/invest.html"
+      "destination": "/invest/index.html"
     },
     {
       "source": "/relocate",
-      "destination": "/relocate.html"
+      "destination": "/relocate/index.html"
     },
     {
       "source": "/contact",
-      "destination": "/contact.html"
+      "destination": "/contact/index.html"
     },
     {
       "source": "/blog",
-      "destination": "/blog.html"
+      "destination": "/blog/index.html"
     },
     {
       "source": "/privacy",
-      "destination": "/privacy.html"
+      "destination": "/privacy/index.html"
     },
     {
       "source": "/terms",
-      "destination": "/terms.html"
+      "destination": "/terms/index.html"
     },
     {
       "source": "/mls-disclaimer",
-      "destination": "/mls-disclaimer.html"
+      "destination": "/mls-disclaimer/index.html"
     },
     {
       "source": "/homes-for-sale-skye-summit",
-      "destination": "/homes-for-sale-skye-summit.html"
+      "destination": "/homes-for-sale-skye-summit/index.html"
     },
     {
       "source": "/404",
-      "destination": "/404.html"
+      "destination": "/404/index.html"
     },
     {
       "source": "/search",
@@ -117,31 +117,31 @@
     },
     {
       "source": "/skye-summit-realtor",
-      "destination": "/skye-summit-realtor.html"
+      "destination": "/skye-summit-realtor/index.html"
     },
     {
       "source": "/skye-summit-faq",
-      "destination": "/skye-summit-faq.html"
+      "destination": "/skye-summit-faq/index.html"
     },
     {
       "source": "/skye-summit-schools",
-      "destination": "/skye-summit-schools.html"
+      "destination": "/skye-summit-schools/index.html"
     },
     {
       "source": "/living-in-skye-summit",
-      "destination": "/living-in-skye-summit.html"
+      "destination": "/living-in-skye-summit/index.html"
     },
     {
       "source": "/new-construction-skye-summit",
-      "destination": "/new-construction-skye-summit.html"
+      "destination": "/new-construction-skye-summit/index.html"
     },
     {
       "source": "/skye-summit-hoa",
-      "destination": "/skye-summit-hoa.html"
+      "destination": "/skye-summit-hoa/index.html"
     },
     {
       "source": "/centennial-hills-real-estate",
-      "destination": "/centennial-hills-real-estate.html"
+      "destination": "/centennial-hills-real-estate/index.html"
     }
   ],
   "headers": [
