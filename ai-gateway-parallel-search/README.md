@@ -1,14 +1,13 @@
-# AI Gateway + Parallel Search
+# Parallel Search with Vercel
 
-Uses [Vercel AI Gateway](https://vercel.com/docs/ai-gateway/capabilities/web-search) built-in **Parallel Search** (`gateway.tools.parallelSearch()`) with any language model.
+Two ways to use [Parallel](https://docs.parallel.ai/integrations/vercel) with the [Vercel AI SDK](https://vercel.com/docs/ai-sdk):
 
-Based on [Parallel × Vercel](https://docs.parallel.ai/integrations/vercel) and [AI Gateway Web Search](https://vercel.com/docs/ai-gateway/capabilities/web-search).
+| Path | Keys | Package | Best for |
+|------|------|---------|----------|
+| **AI Gateway tool** | `AI_GATEWAY_API_KEY` only | `gateway.tools.parallelSearch()` from `ai` | One key, billing via AI Gateway |
+| **Parallel SDK tools** | `AI_GATEWAY_API_KEY` + `PARALLEL_API_KEY` | `@parallel-web/ai-sdk-tools` | Client-side tool execution, Search + Extract APIs |
 
-## Prerequisites
-
-- Vercel CLI: `npm i -g vercel`
-- `AI_GATEWAY_API_KEY` in `.env.local` (same key as other AI Gateway demos)
-- Parallel Search enabled on your AI Gateway account (via [Vercel Marketplace → Parallel](https://vercel.com/marketplace/parallel) if needed)
+Install Parallel from the [Vercel Marketplace](https://vercel.com/marketplace/parallel) to get `PARALLEL_API_KEY`.
 
 ## Setup
 
@@ -17,20 +16,66 @@ cd ai-gateway-parallel-search
 npm install
 ```
 
-## Run
+`.env.local`:
+
+```env
+AI_GATEWAY_API_KEY=...   # Language model via AI Gateway
+PARALLEL_API_KEY=...     # Only for @parallel-web/ai-sdk-tools scripts
+```
+
+> `npm install` uses `--legacy-peer-deps` if needed: `@parallel-web/ai-sdk-tools` currently peers on AI SDK v5; it works with AI SDK v6 in this repo.
+
+---
+
+## Path 1: AI Gateway `parallel_search` (single key)
+
+Gateway runs Parallel Search as a **provider-executed** tool.
 
 ```bash
 npm run search
-npm run search -- "Latest news about Skye Summit Las Vegas real estate"
+npm run search:stream
 ```
 
-Uses `gateway.tools.parallelSearch()` from the `ai` package (see [Parallel × Vercel](https://docs.parallel.ai/integrations/vercel)). The Gateway runs search as a **provider-executed** tool; `index.ts` then synthesizes an answer from those results when the model stops with `tool-calls` only.
+See `index.ts` — includes a synthesis step when the model stops with `tool-calls` only.
+
+---
+
+## Path 2: `@parallel-web/ai-sdk-tools` (Gateway + Parallel keys)
+
+Uses [Parallel’s NPM tools](https://www.npmjs.com/package/@parallel-web/ai-sdk-tools) with **your Parallel API key**. The LLM still routes through AI Gateway (`openai/gpt-5.4`).
+
+**Search** (ranked URLs + excerpts):
 
 ```bash
-npm run search          # generateText + synthesis (recommended CLI)
-npm run search:stream   # streamText example from Vercel docs
+npm run search:sdk
+npm run search:sdk -- "Latest Skye Summit Las Vegas real estate news"
+npm run search:sdk:stream
 ```
 
-## Alternative: `@parallel-web/ai-sdk-tools`
+**Extract** (content from URLs):
 
-For direct Parallel API keys (not routed only through Gateway tools), see `@parallel-web/ai-sdk-tools` and the [Web Search Agent cookbook](https://ai-sdk.dev/cookbook/node/web-search-agent#parallel-web).
+```bash
+npm run extract:sdk
+npm run extract:sdk -- "Summarize https://vercel.com/docs/ai-sdk tool calling"
+```
+
+Example (`parallel-sdk.ts`):
+
+```typescript
+import { createSearchTool } from '@parallel-web/ai-sdk-tools';
+import { generateText, type Tool } from 'ai';
+
+const result = await generateText({
+  model: 'openai/gpt-5.4',
+  messages: [{ role: 'user', content: prompt }],
+  tools: { 'web-search': createSearchTool({ mode: 'one-shot' }) as Tool },
+  toolChoice: 'auto',
+});
+```
+
+## Links
+
+- [Parallel × Vercel](https://docs.parallel.ai/integrations/vercel)
+- [AI Gateway Web Search](https://vercel.com/docs/ai-gateway/capabilities/web-search)
+- [Web Search Agent cookbook](https://ai-sdk.dev/cookbook/node/web-search-agent#parallel-web)
+- [Parallel Vercel template](https://github.com/parallel-web/parallel-cookbook/tree/main/typescript-recipes/parallel-vercel-template)

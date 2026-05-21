@@ -7,12 +7,16 @@
   "scripts": {
     "search": "tsx index.ts",
     "search:stream": "tsx stream.ts",
+    "search:sdk": "tsx parallel-sdk.ts",
+    "search:sdk:stream": "tsx parallel-sdk-stream.ts",
+    "extract:sdk": "tsx parallel-sdk.ts extract",
     "start": "tsx index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@parallel-web/ai-sdk-tools": "^0.2.1",
     "@types/node": "^25.9.1",
     "ai": "^6.0.188",
     "dotenv": "^17.4.2",

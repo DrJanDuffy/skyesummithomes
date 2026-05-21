@@ -9,5 +9,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["index.ts", "stream.ts"]
+  "include": ["index.ts", "stream.ts", "parallel-sdk.ts", "parallel-sdk-stream.ts"]
 }
