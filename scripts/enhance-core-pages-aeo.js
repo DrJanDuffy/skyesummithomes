@@ -26,7 +26,7 @@ const CORE_PAGES = {
       },
       {
         q: 'How do I verify the office address?',
-        a: `NAP matches Google Business Profile: ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL}. See <a href="${C.MAP_PAGE_PATH}">office map</a>.`,
+        a: `Office: ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL} (${C.LABEL_OFFICE_SAME_AS_GOOGLE}). See <a href="${C.MAP_PAGE_PATH}">office map &amp; directions</a>.`,
       },
     ],
   },
@@ -158,7 +158,7 @@ const CORE_PAGES = {
   },
   'contact.html': {
     quickAnswer:
-      `Contact Dr. Jan Duffy at ${C.PHONE_DISPLAY}, ${C.EMAIL}, or ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL}. Business hours Sun–Sat 9 AM–6 PM (per Google Business Profile).`,
+      `Contact Dr. Jan Duffy at ${C.PHONE_DISPLAY}, ${C.EMAIL}, or ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL}. Office hours: Sun–Sat 9 AM–6 PM.`,
     faqs: [
       {
         q: 'What is the fastest way to reach Dr. Jan Duffy?',
@@ -166,7 +166,7 @@ const CORE_PAGES = {
       },
       {
         q: 'Where is the office?',
-        a: `<a href="${C.MAP_PAGE_PATH}">Office location &amp; GPS</a> — same address as Google Business Profile.`,
+        a: `<a href="${C.MAP_PAGE_PATH}">Office location &amp; directions</a> — ${C.LABEL_OFFICE_SAME_AS_GOOGLE}.`,
       },
     ],
   },

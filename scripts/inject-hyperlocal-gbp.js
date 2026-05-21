@@ -50,7 +50,7 @@ function listHtmlFiles(dir, out = []) {
 function actionButtons(large = false) {
   const size = large ? ' btn-large' : '';
   return `
-                <div class="gbp-action-buttons" role="group" aria-label="Contact and Google Business Profile">
+                <div class="gbp-action-buttons" role="group" aria-label="${C.LABEL_CONTACT_ACTIONS}">
                     <a href="tel:${C.PHONE_TEL}" class="btn btn-primary${size}"><i class="fas fa-phone" aria-hidden="true"></i> Call ${C.PHONE_DISPLAY}</a>
                     <a href="${C.SMS_URL}" class="btn btn-secondary${size}"><i class="fas fa-comment-sms" aria-hidden="true"></i> Text</a>
                     <a href="${C.MAPS_DIRECTIONS}" class="btn btn-secondary${size}" target="_blank" rel="noopener"><i class="fas fa-directions" aria-hidden="true"></i> Directions</a>
@@ -103,7 +103,7 @@ function fullBlock() {
                         </ul>
                     </div>
                     <div class="hyperlocal-card hyperlocal-nap">
-                        <h3><i class="fas fa-building" aria-hidden="true"></i> NAP (matches Google Business Profile)</h3>
+                        <h3><i class="fas fa-building" aria-hidden="true"></i> ${C.LABEL_CONTACT_CARD}</h3>
                         <p class="hyperlocal-name"><strong>${C.GBP_BUSINESS_NAME}</strong><br>${C.AGENT_NAME}, ${C.AGENT_TITLE}<br>${C.BROKERAGE}</p>
                         <p><a href="tel:${C.PHONE_TEL}">${C.PHONE_DISPLAY}</a> · <a href="${C.SMS_URL}">Text</a><br><a href="mailto:${C.EMAIL}">${C.EMAIL}</a></p>
                         <p><a href="${C.MAPS_DIRECTIONS}" target="_blank" rel="noopener">${C.STREET}<br>${C.CITY}, ${C.REGION} ${C.POSTAL}</a></p>

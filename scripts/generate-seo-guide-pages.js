@@ -547,7 +547,7 @@ const GUIDES = [
       },
       {
         q: 'Where is Dr. Jan Duffy’s office?',
-        a: `<a href="/office-location">Office location map</a> — ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL}. Hours Sun–Sat 9 AM–6 PM per Google Business Profile.`,
+        a: `<a href="/office-location">Office location map</a> — ${C.STREET}, ${C.CITY}, ${C.REGION} ${C.POSTAL}. Hours Sun–Sat 9 AM–6 PM.`,
       },
     ],
     extraSections: `
@@ -802,10 +802,10 @@ ${guideFooterListHtml()}
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Google Business Profile</h4>
+                    <h4>${C.LABEL_GOOGLE_SECTION}</h4>
                     <div class="gmb-info">
-                        <p><i class="fas fa-star" aria-hidden="true"></i> <strong>4.9/5</strong> (127 reviews)</p>
-                        <a href="https://share.google/yoVmGzrpTUtHrvsnL" target="_blank" rel="noopener" class="gmb-link"><i class="fab fa-google" aria-hidden="true"></i> View on Google</a>
+                        <p><i class="fas fa-star" aria-hidden="true"></i> <strong>${C.RATING}/5</strong> (${C.REVIEW_COUNT} reviews)</p>
+                        <a href="${C.GBP_URL}" target="_blank" rel="noopener" class="gmb-link"><i class="fab fa-google" aria-hidden="true"></i> ${C.LABEL_VIEW_ON_GOOGLE}</a>
                     </div>
                 </div>
             </div>
